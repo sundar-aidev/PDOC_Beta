@@ -1,0 +1,170 @@
+.container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+.header {
+  margin-bottom: 1.5rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.chartSection {
+  min-height: 300px;
+}
+
+.tabs {
+  width: 100%;
+}
+
+.tabsList {
+  margin-bottom: 1rem;
+}
+
+.tabContent {
+  min-height: 300px;
+}
+
+.positionsHeader {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: hsl(var(--foreground));
+}
+
+.emptyState {
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsl(var(--muted-foreground));
+}
+
+.recommendationsSection {
+  padding-top: 1rem;
+}
+
+.subtitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: hsl(var(--foreground));
+}
+
+.recommendationsList {
+  position: relative;
+  height: 300px;
+  padding: 1rem 0;
+}
+
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.recommendationItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.symbol {
+  width: 3.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: right;
+  color: hsl(var(--foreground));
+}
+
+.barWrapper {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.barContainer {
+  position: relative;
+  flex: 1;
+  height: 8px;
+  background-color: hsl(var(--muted));
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #35fd03;
+  border-radius: 4px;
+  transition: width 0.3s ease;
+}
+
+.infoIcon {
+  width: 16px;
+  height: 16px;
+  color: hsl(var(--muted-foreground));
+  opacity: 0.6;
+}
+
+.chartGrid {
+  position: absolute;
+  bottom: 0;
+  left: 4.5rem;
+  right: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.gridLine {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.gridLineTrack {
+  position: absolute;
+  bottom: 20px;
+  width: 1px;
+  height: 280px;
+  background-color: hsl(var(--border));
+  opacity: 0.2;
+}
+
+.gridValue {
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 4px;
+}
+
+@media (max-width: 1024px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+}

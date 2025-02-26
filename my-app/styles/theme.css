@@ -1,0 +1,32 @@
+:root {
+  --color-primary: #0066cc;
+  --color-secondary: #edf2f7;
+  --color-text: #2d3748;
+  --color-text-muted: #718096;
+  --color-border: #e2e8f0;
+  --color-card-bg: #ffffff;
+  --color-progress-bg: #edf2f7;
+  --color-error: #e53e3e;
+
+  --color-chart-1: #0066cc;
+  --color-chart-2: #48bb78;
+  --color-chart-3: #ecc94b;
+  --color-chart-4: #f56565;
+  --color-chart-5: #9f7aea;
+  --color-chart-6: #ed64a6;
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #4299e1;
+    --color-secondary: #2d3748;
+    --color-text: #f7fafc;
+    --color-text-muted: #a0aec0;
+    --color-border: #4a5568;
+    --color-card-bg: #1a202c;
+    --color-progress-bg: #2d3748;
+    --color-error: #fc8181;
+  }
+}
+

@@ -1,0 +1,141 @@
+.container {
+  margin-bottom: 2rem;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.portfolioHeader {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: none;
+}
+
+.portfolioInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.portfolioLabel {
+  display: block;
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.portfolioValue {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.grid {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+}
+
+.card {
+  min-width: 200px;
+  flex: 1;
+  padding: 1rem;
+  background-color: hsl(var(--background));
+  border: 1px solid hsl(var(--border));
+  border-radius: 0.75rem;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.assetType {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.infoIcon {
+  width: 1rem;
+  height: 1rem;
+  color: hsl(var(--muted-foreground));
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valueContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.value {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  position: relative;
+  padding-top: 8px; /* Space for tooltip */
+}
+
+.progressTrack {
+  position: relative;
+  height: 4px;
+  background-color: hsl(var(--muted));
+  border-radius: 2px;
+  overflow: visible;
+}
+
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #03bffd;
+  transition: width 0.3s ease;
+}
+
+.idealMarker {
+  position: absolute;
+  top: -14px; /* Adjusted to align with ideal amount */
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #03bffd; /* Updated to dark blue */
+  transform: translateX(-50%);
+}
+
+.percentageScale {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: hsl(var(--muted-foreground));
+  margin-top: 0.5rem;
+}

@@ -1,0 +1,14 @@
+.container {
+  width: 100%;
+  height: 4px;
+  background-color: #e8e8e8;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.bar {
+  height: 100%;
+  background-color: #03bffd;
+  transition: width 0.3s ease;
+}
+

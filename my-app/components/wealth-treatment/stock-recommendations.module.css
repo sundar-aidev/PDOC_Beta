@@ -1,0 +1,146 @@
+.container {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background-color: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.tableWrapper {
+  position: relative;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.assetCell {
+  font-weight: 500;
+}
+
+.recommendationCell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.increase {
+  color: #35fd03;
+  font-weight: 500;
+}
+
+.decrease {
+  color: #fd0303;
+  font-weight: 500;
+}
+
+.infoIcon {
+  width: 16px;
+  height: 16px;
+  color: hsl(var(--muted-foreground));
+  opacity: 0.6;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  min-width: 200px;
+}
+
+.minValue,
+.maxValue {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  min-width: 24px;
+}
+
+.sliderWrapper {
+  flex: 1;
+  padding: 0 0.5rem;
+}
+
+.slider {
+  height: 8px;
+}
+
+.slider[data-disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.tableCellActions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.replaceButton {
+  background-color: #003b4a;
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+}
+
+.replaceButton:hover {
+  background-color: #002a36;
+}
+
+.adjustmentColumn {
+  min-width: 200px;
+}
+
+.actionsColumn {
+  text-align: right;
+}
+
+/* Custom styles for the slider */
+.slider :global([role="slider"]) {
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  border: 2px solid #003b4a;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.slider :global(.slider-track) {
+  height: 4px;
+  background-color: hsl(var(--border));
+}
+
+.slider :global(.slider-range) {
+  background-color: #003b4a;
+}
+
+/* Tooltip styles */
+.stockRecommendations :global([role="tooltip"]) {
+  max-width: 250px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
