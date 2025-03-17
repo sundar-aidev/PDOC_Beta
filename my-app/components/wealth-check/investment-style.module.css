@@ -1,0 +1,127 @@
+.container {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.tabsList {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.tabsTrigger {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: all 0.2s;
+}
+
+.tabsTrigger[data-state="active"] {
+  background-color: #f0f0f0;
+  color: #003b4a;
+}
+
+.tabsContent {
+  padding: 1rem 0;
+}
+
+.categoriesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.categoryItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.categoryName {
+  width: 150px;
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.categoryBarContainer {
+  flex: 1;
+  height: 16px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.categoryBar {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #8bc34a 100%);
+  border-radius: 8px;
+}
+
+.infoButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoIcon {
+  color: #999;
+}
+
+.percentageScale {
+  margin-top: 1.5rem;
+  padding-left: 150px;
+  padding-right: 2rem;
+}
+
+.scaleLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #999;
+  margin-bottom: 0.25rem;
+}
+
+.scaleLines {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  height: 1px;
+  background-color: #e0e0e0;
+}
+
+.scaleLine {
+  position: absolute;
+  width: 1px;
+  height: 5px;
+  background-color: #e0e0e0;
+  bottom: 0;
+}
+
+.scaleLine:nth-child(1) {
+  left: 0%;
+}
+
+.scaleLine:nth-child(2) {
+  left: 25%;
+}
+
+.scaleLine:nth-child(3) {
+  left: 50%;
+}
+
+.scaleLine:nth-child(4) {
+  left: 75%;
+}
+
+.scaleLine:nth-child(5) {
+  left: 100%;
+}
+

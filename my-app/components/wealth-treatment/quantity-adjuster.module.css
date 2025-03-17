@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 200px;
+}
+
+.minValue,
+.maxValue {
+  font-size: 0.875rem;
+  color: hsl(var(--muted-foreground));
+  min-width: 24px;
+}
+
+.minValue {
+  text-align: right;
+}
+
+.slider {
+  flex: 1;
+}
+

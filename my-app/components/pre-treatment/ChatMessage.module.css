@@ -1,0 +1,99 @@
+.messageContainer {
+  display: flex;
+  margin-bottom: 1.5rem;
+  position: relative;
+  max-width: 100%;
+}
+
+.system {
+  justify-content: flex-start;
+}
+
+.user {
+  justify-content: flex-end;
+}
+
+.assistant {
+  justify-content: flex-start;
+}
+
+.avatarContainer {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  margin-right: 12px;
+}
+
+.user .avatarContainer {
+  margin-left: 12px;
+  margin-right: 0;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.assistantAvatar {
+  background-color: #003b4a;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.messageContent {
+  background-color: white;
+  border-radius: 16px;
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 80%;
+  position: relative;
+}
+
+.system .messageContent {
+  background-color: white;
+}
+
+.user .messageContent {
+  background-color: #f0f7ff;
+}
+
+.assistant .messageContent {
+  background-color: white;
+}
+
+.system .messageContent::before {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: white;
+  transform: rotate(45deg);
+  border-radius: 2px;
+  box-shadow: -2px 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.user .messageContent::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  right: -8px;
+  width: 16px;
+  height: 16px;
+  background-color: #f0f7ff;
+  transform: rotate(45deg);
+  border-radius: 2px;
+  box-shadow: 2px -2px 4px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 768px) {
+  .messageContent {
+    max-width: 90%;
+  }
+}
+

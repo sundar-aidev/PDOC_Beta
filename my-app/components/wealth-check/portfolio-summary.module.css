@@ -1,0 +1,118 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.profileSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profileImageContainer {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #f1f1f1;
+}
+
+.profileImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolioInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolioName {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #62727b;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.holdingsCount {
+  font-size: 0.875rem;
+  color: #8c8c8c;
+  margin: 0;
+}
+
+.scoreSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding-left: 1rem;
+  border-left: 1px solid #e8e8e8;
+}
+
+.scoreLabel {
+  font-size: 0.875rem;
+  color: #62727b;
+  font-weight: 500;
+}
+
+.scoreValue {
+  display: flex;
+  align-items: baseline;
+}
+
+.score {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #01579b;
+}
+
+.maxScore {
+  font-size: 1.125rem;
+  color: #8c8c8c;
+}
+
+.messageSection {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  background-color: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f1f1;
+}
+
+.messageIcon {
+  flex-shrink: 0;
+  margin-top: 0.125rem;
+}
+
+.message {
+  font-size: 0.875rem;
+  color: #343434;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .profileSection {
+    flex: 1;
+  }
+
+  .scoreSection {
+    flex: 0 0 auto;
+    margin-right: 2rem;
+  }
+
+  .messageSection {
+    flex: 2;
+  }
+}

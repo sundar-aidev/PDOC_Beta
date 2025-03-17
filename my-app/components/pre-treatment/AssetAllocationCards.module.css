@@ -1,0 +1,77 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 0.875rem;
+  color: #62727b;
+  font-weight: 500;
+}
+
+.infoIcon {
+  color: #8c8c8c;
+  font-size: 0.875rem;
+}
+
+.value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #01579b;
+  margin-bottom: 12px;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.progressBar {
+  height: 4px;
+  background-color: #e0e0e0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background-color: #03bffd;
+}
+
+.percentageLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: #8c8c8c;
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+

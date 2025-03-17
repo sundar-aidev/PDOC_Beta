@@ -1,0 +1,81 @@
+.container {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f1f1;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #343434;
+  margin: 0 0 1.5rem 0;
+}
+
+.chartContainer {
+  position: relative;
+  height: 300px;
+}
+
+.centerContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  width: 120px;
+}
+
+.assetName {
+  font-size: 0.875rem;
+  color: #62727b;
+  margin-bottom: 0.25rem;
+}
+
+.assetValue {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #01579b;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s;
+}
+
+.legendItem:hover {
+  background-color: #f5f5f5;
+}
+
+.legendItem.active {
+  background-color: #f0f0f0;
+}
+
+.legendColor {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+}
+
+.legendPercentage {
+  font-size: 0.875rem;
+  color: #343434;
+  font-weight: 500;
+}
+

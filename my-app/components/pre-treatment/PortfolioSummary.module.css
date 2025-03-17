@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.avatarContainer {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolioName {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #01579b;
+  margin: 0;
+  margin-bottom: 4px;
+}
+
+.portfolioValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #01579b;
+  margin: 0;
+}
+

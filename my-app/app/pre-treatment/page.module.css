@@ -1,0 +1,77 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 100vh;
+}
+
+.chatContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.welcomeHeading {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.spacer {
+  height: 16px;
+}
+
+.analysisText {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+.questionText {
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+.highlightedText {
+  font-weight: 600;
+  color: #01579b;
+}
+
+.userInputContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
+}
+
+.diagnosisButton {
+  background-color: #e0f7ff;
+  color: #01579b;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-top: 0.75rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.diagnosisButton:hover {
+  background-color: #c5eeff;
+}
+
+.recommendationMessage {
+  margin-top: 1.5rem;
+}
+
+.actionButtonContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+

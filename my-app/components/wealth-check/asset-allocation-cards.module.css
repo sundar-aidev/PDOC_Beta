@@ -1,0 +1,116 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f1f1f1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #62727b;
+  margin: 0;
+}
+
+.infoButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+}
+
+.infoIcon {
+  color: #8c8c8c;
+  width: 16px;
+  height: 16px;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.valueContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #01579b;
+}
+
+.indicator {
+  font-size: 0.75rem;
+  margin-top: 2px;
+}
+
+.up {
+  color: #006b00;
+}
+
+.down {
+  color: #fd0303;
+}
+
+.neutral {
+  color: #8c8c8c;
+}
+
+.progressContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.progress {
+  height: 4px;
+  border-radius: 2px;
+  background-color: #e8e8e8;
+}
+
+.progress > div {
+  background-color: #03bffd;
+}
+
+.percentageLabels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6875rem;
+  color: #8c8c8c;
+}
+
+@media (min-width: 640px) {
+  .container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
