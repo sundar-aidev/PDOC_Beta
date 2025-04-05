@@ -75,14 +75,7 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
               <div className={styles.cardContent}>
                 <div className={styles.valueContainer}>
                   <span className={styles.value}>{asset.formattedValue}</span>
-                  <TooltipProvider>
-                    <Tooltip>
-                      <TooltipTrigger className={styles.idealIndicator}>
-                        <span className={styles.idealAmount}>{formatCurrency(asset.idealAmount)}</span>
-                      </TooltipTrigger>
-                      <TooltipContent>Ideal amount for {asset.type.toLowerCase()}</TooltipContent>
-                    </Tooltip>
-                  </TooltipProvider>
+
                 </div>
                 <div className={styles.progressContainer}>
                   <div className={styles.progressTrack}>

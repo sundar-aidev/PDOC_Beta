@@ -15,7 +15,7 @@ const mockAssets = [
   {
     type: "Stocks",
     value: 40456.78,
-    formattedValue: "€40,456.78",
+    formattedValue: "€40,4K",
     percentage: 70,
     idealAmount: 45000,
     currency: "EUR",

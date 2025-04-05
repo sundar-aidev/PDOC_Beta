@@ -140,14 +140,13 @@ export default function WealthCheckPage() {
     title: "Your portfolio is underweight in stocks, missing a crucial growth driver.",
     description:
       "Stocks are essential for building wealth over the long term, offering both growth potential and opportunities to capitalize on market trends. Increasing your allocation to stocks aligns with the recommended balance, ensuring a stronger foundation for growth while maintaining diversification. Let's adjust your asset mix to take full advantage of equities' ability to drive performance and achieve your financial goals.",
-    actionLink: "/wealth-treatment",
+    actionLink: "/pre-treatment",
     actionText: "Let's do a treatment to see what exactly you need to change",
   }
 
   return (
     <div className="container mx-auto px-4 py-8">
       <PortfolioSummary {...portfolioSummary} />
-
       <AssetAllocationCards cards={assetCards} />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
