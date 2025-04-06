@@ -1,187 +1,69 @@
-// "use client"
+"use client";
 
-// import { Info } from "lucide-react"
-// import { Card } from "@/components/ui/card"
-// import {
-//   Tooltip,
-//   TooltipContent,
-//   TooltipProvider,
-//   TooltipTrigger,
-// } from "@/components/ui/tooltip"
-// import { Avatar } from "@/components/ui/avatar"
-// import styles from "./multi-asset-overview.module.css"
-
-// interface Asset {
-//   type: string
-//   value: number
-//   formattedValue: string
-//   toleranceStart: number
-//   toleranceEnd: number
-//   idealAmount: number
-//   currency: string
-// }
-
-// interface MultiAssetOverviewProps {
-//   totalValue: number
-//   assets: Asset[]
-//   avatarUrl: string
-// }
-
-// export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAssetOverviewProps) {
-//   const formatCurrency = (value: number | undefined): string => {
-//     if (typeof value !== "number") {
-//       return "-"
-//     }
-//     return value.toLocaleString("de-DE", {
-//       style: "currency",
-//       currency: "EUR",
-//       minimumFractionDigits: 2,
-//     })
-//   }
-
-//   return (
-//     <section className={styles.container}>
-//       <div className={styles.overview}>
-//         <h2 className={styles.title}>
-//           <span>Multi Asset Overview</span>
-//           <TooltipProvider>
-//             <Tooltip>
-//               <TooltipTrigger>
-//                 <Info className={styles.infoIcon} />
-//               </TooltipTrigger>
-//               <TooltipContent>Overview of your portfolio assets</TooltipContent>
-//             </Tooltip>
-//           </TooltipProvider>
-//         </h2>
-
-//         {/* Main row container for portfolio info and asset cards */}
-//         <div className={styles.portfolioHeader}>
-//           <div className={styles.portfolioInfo}>
-//             <Avatar src={avatarUrl} alt="Portfolio Avatar" />
-//             <div>
-//               <span className={styles.portfolioLabel}>Your Portfolio</span>
-//               <span className={styles.portfolioValue}>{formatCurrency(totalValue)}</span>
-//             </div>
-//           </div>
-//           <div className={styles.grid}>
-//             {assets.map((asset) => (
-//               <Card key={asset.type} className={styles.card}>
-//                 <div className={styles.cardHeader}>
-//                   <span className={styles.assetType}>{asset.type}</span>
-//                   <TooltipProvider>
-//                     <Tooltip>
-//                       <TooltipTrigger>
-//                         <Info className={styles.infoIcon} />
-//                       </TooltipTrigger>
-//                       <TooltipContent>
-//                         Details about {asset.type.toLowerCase()}
-//                       </TooltipContent>
-//                     </Tooltip>
-//                   </TooltipProvider>
-//                 </div>
-//                 <div className={styles.cardContent}>
-//                   <div className={styles.valueContainer}>
-//                     <span className={styles.value}>{asset.formattedValue}</span>
-//                   </div>
-//                   <div className={styles.progressContainer}>
-//                     <div className={styles.progressTrack}>
-//                       <div
-//                         className={styles.progressBar}
-//                         style={{
-//                           left: `${asset.toleranceStart}%`,
-//                           width: `${asset.toleranceEnd - asset.toleranceStart}%`,
-//                         }}
-//                       />
-//                       <div
-//                         className={styles.idealMarker}
-//                         style={{
-//                           left: `${(asset.idealAmount / totalValue) * 100}%`,
-//                         }}
-//                       />
-//                     </div>
-//                     <div className={styles.percentageScale}>
-//                       <span>0%</span>
-//                       <span>100%</span>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </Card>
-//             ))}
-//           </div>
-//         </div>
-//       </div>
-//     </section>
-//   )
-// }
-
-"use client"
-
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import { Info } from "lucide-react"
-import { Card } from "@/components/ui/card"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { Info } from "lucide-react";
+import { Card } from "@/components/ui/card";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { Avatar } from "@/components/ui/avatar"
-import styles from "./multi-asset-overview.module.css"
+} from "@/components/ui/tooltip";
+import { Avatar } from "@/components/ui/avatar";
+import styles from "./multi-asset-overview.module.css";
 
 interface Asset {
-  type: string
-  value: number
-  formattedValue: string
-  toleranceStart: number
-  toleranceEnd: number
-  idealAmount: number
-  currency: string
+  type: string;
+  value: number;
+  formattedValue: string;
+  toleranceStart: number;
+  toleranceEnd: number;
+  idealAmount: number;
+  currency: string;
 }
 
 interface MultiAssetOverviewProps {
-  totalValue: number
-  assets: Asset[]
-  avatarUrl: string
+  totalValue: number;
+  assets: Asset[];
+  avatarUrl: string;
 }
 
 export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAssetOverviewProps) {
-  const router = useRouter()
-  const [activeAsset, setActiveAsset] = useState("Stocks")
+  const router = useRouter();
+  const [activeAsset, setActiveAsset] = useState("Stocks");
 
   const formatCurrency = (value: number | undefined): string => {
     if (typeof value !== "number") {
-      return "-"
+      return "-";
     }
     return value.toLocaleString("de-DE", {
       style: "currency",
       currency: "EUR",
       minimumFractionDigits: 2,
-    })
-  }
+    });
+  };
 
   const handleAssetClick = (assetType: string) => {
-    console.log("Clicked asset:", assetType)
-    setActiveAsset(assetType)
+    setActiveAsset(assetType);
 
-    // Navigate based on asset type
     switch (assetType) {
       case "Stocks":
-        router.push("/stocks")
-        break
+        router.push("/stocks");
+        break;
       case "Cash to Invest":
-        router.push("/cash-to-invest")
-        break
+        router.push("/cash-to-invest");
+        break;
       case "Bonds":
-        router.push("/bonds")
-        break
+        router.push("/bonds");
+        break;
       case "Commodities":
-        router.push("/commodities")
-        break
+        router.push("/commodities");
+        break;
       default:
-        break
+        break;
     }
-  }
+  };
 
   return (
     <section className={styles.container}>
@@ -198,7 +80,6 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
           </TooltipProvider>
         </h2>
 
-        {/* Main row container for portfolio info and asset cards */}
         <div className={styles.portfolioHeader}>
           <div className={styles.portfolioInfo}>
             <Avatar src={avatarUrl} alt="Portfolio Avatar" />
@@ -207,46 +88,6 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
               <span className={styles.portfolioValue}>{formatCurrency(totalValue)}</span>
             </div>
           </div>
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-        </div>
-
-        <div className={styles.grid}>
-          {assets.map((asset) => (
-            console.log(asset),
-
-            <Card key={asset.type} className={styles.card}>
-              <div className={styles.cardHeader}>
-                <span className={styles.assetType}>{asset.type}</span>
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger>
-                      <Info className={styles.infoIcon} />
-                    </TooltipTrigger>
-                    <TooltipContent>Details about {asset.type.toLowerCase()}</TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
-              <div className={styles.cardContent}>
-                <div className={styles.valueContainer}>
-                  <span className={styles.value}>{asset.formattedValue}</span>
-                </div>
-                <div className={styles.progressContainer}>
-                  <div className={styles.progressTrack}>
-                    <div className={styles.progressBar}
-                    style={{
-                      left: `${asset.toleranceStart}%`,
-                      width: `${asset.toleranceEnd - asset.toleranceStart}%`,
-                    }} />
-                    <div
-                      className={styles.idealMarker}
-                      style={{
-                        left: `${(asset.idealAmount / totalValue) * 100}%`,
-                      }}
-                    />
-=======
->>>>>>> Stashed changes
           <div className={styles.grid}>
             {assets.map((asset) => (
               <Card
@@ -255,7 +96,6 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                   activeAsset === asset.type ? styles.activeCard : styles.inactiveCard
                 }`}
               >
-                {/* Wrapping the entire card content with an onClick */}
                 <div onClick={() => handleAssetClick(asset.type)} style={{ cursor: "pointer" }}>
                   <div className={styles.cardHeader}>
                     <span className={styles.assetType}>{asset.type}</span>
@@ -269,10 +109,6 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
-<<<<<<< Updated upstream
-=======
->>>>>>> 69dc8e5448f7aeac6a130d85d5caaa969a8b8a36
->>>>>>> Stashed changes
                   </div>
                   <div className={styles.cardContent}>
                     <div className={styles.valueContainer}>
@@ -307,5 +143,5 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
         </div>
       </div>
     </section>
-  )
+  );
 }
