@@ -207,6 +207,46 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
               <span className={styles.portfolioValue}>{formatCurrency(totalValue)}</span>
             </div>
           </div>
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+        </div>
+
+        <div className={styles.grid}>
+          {assets.map((asset) => (
+            console.log(asset),
+
+            <Card key={asset.type} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <span className={styles.assetType}>{asset.type}</span>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger>
+                      <Info className={styles.infoIcon} />
+                    </TooltipTrigger>
+                    <TooltipContent>Details about {asset.type.toLowerCase()}</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
+              </div>
+              <div className={styles.cardContent}>
+                <div className={styles.valueContainer}>
+                  <span className={styles.value}>{asset.formattedValue}</span>
+                </div>
+                <div className={styles.progressContainer}>
+                  <div className={styles.progressTrack}>
+                    <div className={styles.progressBar}
+                    style={{
+                      left: `${asset.toleranceStart}%`,
+                      width: `${asset.toleranceEnd - asset.toleranceStart}%`,
+                    }} />
+                    <div
+                      className={styles.idealMarker}
+                      style={{
+                        left: `${(asset.idealAmount / totalValue) * 100}%`,
+                      }}
+                    />
+=======
+>>>>>>> Stashed changes
           <div className={styles.grid}>
             {assets.map((asset) => (
               <Card
@@ -229,6 +269,10 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                         </TooltipContent>
                       </Tooltip>
                     </TooltipProvider>
+<<<<<<< Updated upstream
+=======
+>>>>>>> 69dc8e5448f7aeac6a130d85d5caaa969a8b8a36
+>>>>>>> Stashed changes
                   </div>
                   <div className={styles.cardContent}>
                     <div className={styles.valueContainer}>
