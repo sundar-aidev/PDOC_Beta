@@ -113,34 +113,34 @@
   flex-direction: column;
   gap: 0.25rem;
   position: relative;
-  padding-top: 8px; /* Space for tooltip */
+  padding-top: 8px;
 }
 
 .progressTrack {
   position: relative;
-  height: 4px;
+  height: 8px;
   background-color: hsl(var(--muted));
-  border-radius: 2px;
+  border-radius: 4px;
   overflow: visible;
 }
 
 .progressBar {
   position: absolute;
   top: 0;
-  left: 0;
   height: 100%;
   background-color: #03bffd;
+  border-radius: 4px;
   transition: width 0.3s ease;
 }
 
 .idealMarker {
   position: absolute;
-  top: -14px; /* Adjust to align with the ideal amount pointer */
+  top: -14px; 
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid #03bffd; /* Adjust color if desired */
+  border-top: 6px solid #03bffd; 
   transform: translateX(-50%);
 }
 
@@ -151,3 +151,9 @@
   color: hsl(var(--muted-foreground));
   margin-top: 0.5rem;
 }
+
+.toleranceRange {
+  position: absolute;
+  height: 100%;
+  background-color: rgba(0, 123, 255, 0.5);
+} 
