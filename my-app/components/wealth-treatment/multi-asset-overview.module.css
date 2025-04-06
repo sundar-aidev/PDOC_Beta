@@ -2,12 +2,14 @@
   margin-bottom: 2rem;
 }
 
+/* Keep the title above and the row (portfolioHeader) below */
 .overview {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Title on top, row below */
   gap: 1.5rem;
 }
 
+/* Title styling */
 .title {
   display: flex;
   align-items: center;
@@ -17,18 +19,24 @@
   color: hsl(var(--foreground));
 }
 
+/* Main row container for portfolio info and cards */
 .portfolioHeader {
   display: flex;
-  align-items: center;
+  align-items: center;       /* or flex-start if you want top-aligned */
+  justify-content: space-between;
   padding: 0.75rem;
   background-color: transparent;
   border: none;
+  flex-wrap: nowrap;         /* Prevents wrapping to a new line */
+  gap: 1rem;                 /* Optional: spacing between info & cards */
 }
 
+/* Left side (avatar + "Your Portfolio") */
 .portfolioInfo {
   display: flex;
   align-items: center;
   gap: 1rem;
+  flex: 0 0 auto;            /* Prevents it from growing or shrinking */
 }
 
 .portfolioLabel {
@@ -44,16 +52,20 @@
   color: hsl(var(--foreground));
 }
 
+/* Right side: container for asset cards */
 .grid {
   display: flex;
+  flex-wrap: nowrap;         /* Keeps cards in a single row */
   gap: 1rem;
-  overflow-x: auto;
-  padding: 0.5rem 0;
+  overflow-x: auto;          /* Horizontal scroll if not enough space */
+  padding: 0.5rem 0;         /* Adjust as needed */
+  flex: 1 1 auto;            /* Occupies remaining space */
 }
 
+/* Each card */
 .card {
   min-width: 200px;
-  flex: 1;
+  flex: 0 0 auto;            /* Ensures the card won't stretch and wrap */
   padding: 1rem;
   background-color: hsl(var(--background));
   border: 1px solid hsl(var(--border));
@@ -123,12 +135,12 @@
 
 .idealMarker {
   position: absolute;
-  top: -14px; /* Adjusted to align with ideal amount */
+  top: -14px; /* Adjust to align with the ideal amount pointer */
   width: 0;
   height: 0;
   border-left: 6px solid transparent;
   border-right: 6px solid transparent;
-  border-top: 6px solid #03bffd; /* Updated to dark blue */
+  border-top: 6px solid #03bffd; /* Adjust color if desired */
   transform: translateX(-50%);
 }
 
