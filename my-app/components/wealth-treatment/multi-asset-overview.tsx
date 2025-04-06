@@ -10,7 +10,8 @@ interface Asset {
   type: string
   value: number
   formattedValue: string
-  percentage: number
+  toleranceStart: number,
+  toleranceEnd: number,
   idealAmount: number
   currency: string
 }
@@ -60,6 +61,8 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
 
         <div className={styles.grid}>
           {assets.map((asset) => (
+            console.log(asset),
+
             <Card key={asset.type} className={styles.card}>
               <div className={styles.cardHeader}>
                 <span className={styles.assetType}>{asset.type}</span>
@@ -79,7 +82,11 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                 </div>
                 <div className={styles.progressContainer}>
                   <div className={styles.progressTrack}>
-                    <div className={styles.progressBar} style={{ width: `${asset.percentage}%` }} />
+                    <div className={styles.progressBar}
+                    style={{
+                      left: `${asset.toleranceStart}%`,
+                      width: `${asset.toleranceEnd - asset.toleranceStart}%`,
+                    }} />
                     <div
                       className={styles.idealMarker}
                       style={{
@@ -100,5 +107,4 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
     </section>
   )
 }
-
 
