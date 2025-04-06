@@ -5,7 +5,7 @@
 /* Keep the title above and the row (portfolioHeader) below */
 .overview {
   display: flex;
-  flex-direction: column; /* Title on top, row below */
+  flex-direction: column; 
   gap: 1.5rem;
 }
 
@@ -70,6 +70,28 @@
   background-color: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   border-radius: 0.75rem;
+}
+
+.activeCard {
+  background-color: white;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.inactiveCard {
+  background-color: #f0f0f0;
+  opacity: 0.9;
+}
+
+.activeCard {
+  background-color: white;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.inactiveCard {
+  background-color: #f0f0f0;
+  opacity: 0.9;
 }
 
 .cardHeader {
