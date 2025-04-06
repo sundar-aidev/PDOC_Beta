@@ -43,12 +43,12 @@ const mockAssets = [
 ]
 
 const mockPositions = [
-  { label: "AAPL", value: 25, color: "#03bffd" },
-  { label: "NVDA", value: 20, color: "#03bffd" },
-  { label: "MSFT", value: 18, color: "#03bffd" },
-  { label: "TSLA", value: 15, color: "#03bffd" },
-  { label: "GOOGL", value: 12, color: "#03bffd" },
-  { label: "AMZN", value: 10, color: "#03bffd" },
+  { symbol: "AAPL", currentValue: 75, projectedValue: 25 },
+  { symbol: "NVDA", currentValue: 60, projectedValue: 20 },
+  { symbol: "MSFT", currentValue: 55, projectedValue: 15 },
+  { symbol: "TSLA", currentValue: 45, projectedValue: 15 },
+  { symbol: "GOOGL", currentValue: 35, projectedValue: 50 },
+  { symbol: "AMZN", currentValue: 30, projectedValue: 60 },
 ]
 
 const mockRecommendations = [

@@ -4,6 +4,8 @@
   border-radius: 0.5rem;
   background-color: hsl(var(--card));
   border: 1px solid hsl(var(--border));
+  width: 100%;
+  max-width: 100%;
 }
 
 .header {
@@ -23,13 +25,15 @@
 }
 
 .content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   gap: 2rem;
 }
 
 .chartSection {
   min-height: 300px;
+  width: 100%;
 }
 
 .tabs {
@@ -41,7 +45,10 @@
 }
 
 .tabContent {
-  min-height: 300px;
+  display: flex;
+  flex-direction: row; /* ✅ key change to enable side-by-side */
+  width: 100%;
+  gap: 2rem;
 }
 
 .positionsHeader {
@@ -59,8 +66,13 @@
   color: hsl(var(--muted-foreground));
 }
 
+
+.currentStocksPortfolioSection,
 .recommendationsSection {
-  padding-top: 1rem;
+  width: 50%;      /* ✅ evenly divide the space */
+  flex: 1 1 50%;   /* ensures responsiveness */
+  display: flex;
+  flex-direction: column;
 }
 
 .subtitle {
