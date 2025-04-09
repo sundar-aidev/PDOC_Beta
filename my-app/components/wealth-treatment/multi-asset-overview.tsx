@@ -49,10 +49,10 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
 
     switch (assetType) {
       case "Stocks":
-        router.push("/stocks");
+        router.push("/treatment");
         break;
       case "Cash to Invest":
-        router.push("/cash-to-invest");
+        router.push("/pre-treatment");
         break;
       case "Bonds":
         router.push("/bonds");
@@ -81,6 +81,7 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
         </h2>
 
         <div className={styles.portfolioHeader}>
+          {/* Avatar and Total Portfolio Segment */}
           <div className={styles.portfolioInfo}>
             <Avatar src={avatarUrl} alt="Portfolio Avatar" />
             <div>
@@ -88,6 +89,8 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
               <span className={styles.portfolioValue}>{formatCurrency(totalValue)}</span>
             </div>
           </div>
+
+          {/* Metric Cards */}
           <div className={styles.grid}>
             {assets.map((asset) => (
               <Card
@@ -110,10 +113,14 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                       </Tooltip>
                     </TooltipProvider>
                   </div>
+
                   <div className={styles.cardContent}>
+                    {/* Monetary Value */}
                     <div className={styles.valueContainer}>
                       <span className={styles.value}>{asset.formattedValue}</span>
                     </div>
+
+                    {/* Multi-Asset Bar Chart with blue Tolerance area */}
                     <div className={styles.progressContainer}>
                       <div className={styles.progressTrack}>
                         <div

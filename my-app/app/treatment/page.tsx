@@ -83,8 +83,13 @@ const mockStockPositions = [
 export default function Page() {
   return (
     <div className="container mx-auto p-4 space-y-6">
+      {/* Top Section - Metric Cards etc. */}
       <MultiAssetOverview totalValue={75456.78} assets={mockAssets} avatarUrl="/placeholder.svg" />
+
+      {/* Overlayed BarChart Section with tabs: Stocks, Sector, Region, Invest. Styles */}
       <StockDistribution currentPositions={mockPositions} recommendations={mockRecommendations} />
+      
+      {/* Table of Recommendations */}
       <StockRecommendations positions={mockStockPositions} />
       <NewStockRecommendations />
     </div>
