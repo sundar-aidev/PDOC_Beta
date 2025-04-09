@@ -16,7 +16,7 @@ const mockAssets = [
   {
     type: "Stocks",
     value: 40456.78,
-    formattedValue: "€40,456.78",
+    formattedValue: "€40.5K",
     toleranceStart: 60,
     toleranceEnd: 80,
     idealAmount: 45000,

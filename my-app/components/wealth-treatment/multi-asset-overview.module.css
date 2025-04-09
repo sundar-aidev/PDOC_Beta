@@ -66,7 +66,7 @@
 .card {
   min-width: 200px;
   flex: 0 0 auto;            /* Ensures the card won't stretch and wrap */
-  padding: 1rem;
+  padding: 0.75rem;
   background-color: hsl(var(--background));
   border: 1px solid hsl(var(--border));
   border-radius: 0.75rem;
@@ -74,24 +74,17 @@
 
 .activeCard {
   background-color: white;
-  border-color: hsl(var(--primary));
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .inactiveCard {
-  background-color: #f0f0f0;
+  background-color: #E8E8E8;
   opacity: 0.9;
-}
-
-.activeCard {
-  background-color: white;
-  border-color: hsl(var(--primary));
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-.inactiveCard {
-  background-color: #f0f0f0;
-  opacity: 0.9;
+  padding: 0.75rem;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cardHeader {
@@ -114,9 +107,30 @@
 
 .cardContent {
   display: flex;
-  flex-direction: column;
   gap: 0.75rem;
 }
+
+/* Flex column when active */
+.activeCard .cardContent {
+  flex-direction: column;
+}
+
+.inactiveCard .cardContent {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.inactiveCard .progressContainer {
+  flex: 1;
+  min-width: 0;
+}
+
+.inactiveCard .valueContainer {
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
 
 .valueContainer {
   display: flex;

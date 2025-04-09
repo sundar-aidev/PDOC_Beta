@@ -81,7 +81,6 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
         </h2>
 
         <div className={styles.portfolioHeader}>
-          {/* Avatar and Total Portfolio Segment */}
           <div className={styles.portfolioInfo}>
             <Avatar src={avatarUrl} alt="Portfolio Avatar" />
             <div>
@@ -90,62 +89,68 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
             </div>
           </div>
 
-          {/* Metric Cards */}
           <div className={styles.grid}>
-            {assets.map((asset) => (
-              <Card
-                key={asset.type}
-                className={`${styles.card} ${
-                  activeAsset === asset.type ? styles.activeCard : styles.inactiveCard
-                }`}
-              >
-                <div onClick={() => handleAssetClick(asset.type)} style={{ cursor: "pointer" }}>
-                  <div className={styles.cardHeader}>
-                    <span className={styles.assetType}>{asset.type}</span>
-                    <TooltipProvider>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Info className={styles.infoIcon} />
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          Details about {asset.type.toLowerCase()}
-                        </TooltipContent>
-                      </Tooltip>
-                    </TooltipProvider>
-                  </div>
-
-                  <div className={styles.cardContent}>
-                    {/* Monetary Value */}
-                    <div className={styles.valueContainer}>
-                      <span className={styles.value}>{asset.formattedValue}</span>
+            {assets.map((asset) => {
+              const isActive = activeAsset === asset.type;
+              return (
+                <Card
+                  key={asset.type}
+                  className={`${styles.card} ${
+                    isActive ? styles.activeCard : styles.inactiveCard
+                  }`}
+                >
+                  <div onClick={() => handleAssetClick(asset.type)} style={{ cursor: "pointer" }}>
+                    <div className={styles.cardHeader}>
+                      <span className={styles.assetType}>{asset.type}</span>
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Info className={styles.infoIcon} />
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            Details about {asset.type.toLowerCase()}
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
                     </div>
 
-                    {/* Multi-Asset Bar Chart with blue Tolerance area */}
-                    <div className={styles.progressContainer}>
-                      <div className={styles.progressTrack}>
-                        <div
-                          className={styles.progressBar}
-                          style={{
-                            left: `${asset.toleranceStart}%`,
-                            width: `${asset.toleranceEnd - asset.toleranceStart}%`,
-                          }}
-                        />
-                        <div
-                          className={styles.idealMarker}
-                          style={{
-                            left: `${(asset.idealAmount / totalValue) * 100}%`,
-                          }}
-                        />
+                    <div className={styles.cardContent}>
+                      <div className={styles.valueContainer}>
+                        <span className={styles.value}>
+                          {isActive
+                            ? formatCurrency(asset.value)
+                            : asset.formattedValue}
+                        </span>
                       </div>
-                      <div className={styles.percentageScale}>
-                        <span>0%</span>
-                        <span>100%</span>
+
+                      <div className={styles.progressContainer}>
+                        <div className={styles.progressTrack}>
+                          <div
+                            className={styles.progressBar}
+                            style={{
+                              left: `${asset.toleranceStart}%`,
+                              width: `${asset.toleranceEnd - asset.toleranceStart}%`,
+                            }}
+                          />
+                          <div
+                            className={styles.idealMarker}
+                            style={{
+                              left: `${(asset.idealAmount / totalValue) * 100}%`,
+                            }}
+                          />
+                        </div>
+                        {isActive && (
+                          <div className={styles.percentageScale}>
+                            <span>0%</span>
+                            <span>100%</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
-                </div>
-              </Card>
-            ))}
+                </Card>
+              );
+            })}
           </div>
         </div>
       </div>
