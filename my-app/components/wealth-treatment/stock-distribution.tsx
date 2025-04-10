@@ -57,14 +57,16 @@ export function StockDistribution({
     <div className={styles.container}>
       <div className={styles.header}>
         <div className={styles.titleWrapper}>
-          <h3 className={styles.title}>Stock Distribution</h3>
+          <h3 className={styles.title}>Wealth Distribution Overview</h3>
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger>
                 <Info className={styles.infoIcon} />
               </TooltipTrigger>
               <TooltipContent>
-                View your current stock distribution and recommendations
+                View your current and advidsed stock distribution across various categories like 
+                industry, region, and investment style. The charts provide a clear overview of your
+                portfolio's diversification and help identify areas for potential growth or adjustment.
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -73,10 +75,10 @@ export function StockDistribution({
 
       <div className={styles.content}>
         <div className={styles.chartSection}>
-          <Tabs defaultValue="positions" className={styles.tabs}>
+          <Tabs defaultValue="others" className={styles.tabs}>
             <TabsList className={styles.tabsList}>
-              <TabsTrigger value="positions">Positions</TabsTrigger>
-              <TabsTrigger value="others">Others</TabsTrigger>
+              <TabsTrigger value="others">Industry, Region, Investment Style</TabsTrigger>
+              <TabsTrigger value="positions">Stocks</TabsTrigger>
             </TabsList>
 
             <TabsContent value="positions" className={styles.tabContent}>
