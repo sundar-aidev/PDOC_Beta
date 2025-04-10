@@ -3,42 +3,40 @@ import { StockDistribution } from "@/components/wealth-treatment/stock-distribut
 import { StockRecommendations } from "@/components/wealth-treatment/stock-recommendations"
 import { NewStockRecommendations } from "@/components/wealth-treatment/new-stock-recommendations"
 
-const totalValue = 75000
-
 const mockAssets = [
   {
     type: "Cash to Invest",
     value: 35000,
     formattedValue: "35.0K",
-    toleranceStart: 20,
+    toleranceStart: 30,
     toleranceEnd: 50,
     idealAmount: 40000,
     currency: "EUR",
   },
   {
     type: "Stocks",
-    value: 40000,
+    value: 40456.78,
     formattedValue: "€40.5K",
-    toleranceStart: 50,
+    toleranceStart: 60,
     toleranceEnd: 80,
     idealAmount: 45000,
     currency: "EUR",
   },
   {
     type: "Bonds",
-    value: 0,
+    value: 4000,
     formattedValue: "4.0K",
-    toleranceStart: 0,
-    toleranceEnd: 30,
+    toleranceStart: 20,
+    toleranceEnd: 40,
     idealAmount: 5000,
     currency: "EUR",
   },
   {
     type: "Commodities",
-    value: 0,
+    value: 1000,
     formattedValue: "1.0K",
-    toleranceStart: 0,
-    toleranceEnd: 10,
+    toleranceStart: 70,
+    toleranceEnd: 90,
     idealAmount: 1500,
     currency: "EUR",
   },
@@ -86,7 +84,7 @@ export default function Page() {
   return (
     <div className="container mx-auto p-4 space-y-6">
       {/* Top Section - Metric Cards etc. */}
-      <MultiAssetOverview totalValue={totalValue} assets={mockAssets} avatarUrl="/placeholder.svg" />
+      <MultiAssetOverview totalValue={75456.78} assets={mockAssets} avatarUrl="/placeholder.svg" />
 
       {/* Overlayed BarChart Section with tabs: Stocks, Sector, Region, Invest. Styles */}
       <StockDistribution currentPositions={mockPositions} recommendations={mockRecommendations} />

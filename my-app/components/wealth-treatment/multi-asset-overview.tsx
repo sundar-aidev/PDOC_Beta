@@ -1,16 +1,16 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useMemo } from "react";
 import { Info } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { Avatar } from "@/components/ui/avatar";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Avatar } from "@/components/ui/avatar";
 import styles from "./multi-asset-overview.module.css";
 
 interface Asset {
@@ -31,7 +31,17 @@ interface MultiAssetOverviewProps {
 
 export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAssetOverviewProps) {
   const router = useRouter();
-  const [activeAsset, setActiveAsset] = useState("Stocks");
+  const pathname = usePathname();
+
+  // Determine which card should be active from URL
+  const activeAsset = useMemo(() => {
+    if (!pathname) return "Stocks"; // fallback
+    if (pathname.includes("commodities")) return "Commodities";
+    if (pathname.includes("pre-treatment")) return "Cash to Invest";
+    if (pathname.includes("bonds")) return "Bonds";
+    if (pathname.includes("stocks") || pathname.includes("treatment")) return "Stocks";
+    return "Stocks";
+  }, [pathname]);
 
   const formatCurrency = (value: number | undefined): string => {
     if (typeof value !== "number") {
@@ -45,20 +55,18 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
   };
 
   const handleAssetClick = (assetType: string) => {
-    setActiveAsset(assetType);
-
     switch (assetType) {
       case "Stocks":
-        router.push("/treatment");
+        router.push("/treatment/stocks");
         break;
       case "Cash to Invest":
         router.push("/pre-treatment");
         break;
       case "Bonds":
-        router.push("/bonds");
+        router.push("/treatment/bonds");
         break;
       case "Commodities":
-        router.push("/commodities");
+        router.push("/treatment/commodities");
         break;
       default:
         break;
@@ -92,6 +100,7 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
           <div className={styles.grid}>
             {assets.map((asset) => {
               const isActive = activeAsset === asset.type;
+
               return (
                 <Card
                   key={asset.type}
@@ -135,7 +144,7 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                           <div
                             className={styles.idealMarker}
                             style={{
-                              left: `${(asset.idealAmount / totalValue) * 100}%`,
+                              left: `${(asset.value / totalValue) * 100}%`,
                             }}
                           />
                         </div>
