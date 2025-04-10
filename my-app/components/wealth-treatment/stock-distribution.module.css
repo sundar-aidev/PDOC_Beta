@@ -49,6 +49,7 @@
   flex-direction: row; /* ✅ key change to enable side-by-side */
   width: 100%;
   gap: 2rem;
+  justify-content: space-between;
 }
 
 .positionsHeader {
@@ -75,10 +76,15 @@
   flex-direction: column;
 }
 
+.subtitleWrapper {
+  display: flex;
+  gap: 0.5rem;
+  
+}
+
 .subtitle {
   font-size: 0.875rem;
   font-weight: 500;
-  margin-bottom: 1.5rem;
   color: hsl(var(--foreground));
 }
 

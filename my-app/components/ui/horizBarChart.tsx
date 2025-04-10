@@ -31,15 +31,40 @@ interface HorizBarChartProps {
 
 const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) => {
   const getLabels = () =>
-    data.map((item) => item.RegionName || item.GICS_Industry_Name || item.CategoryName || item.stockName || "");
+    data.map(
+      (item) =>
+        item.RegionName ||
+        item.GICS_Industry_Name ||
+        item.CategoryName ||
+        item.stockName ||
+        ""
+    );
 
   const getTitleIcon = () => {
     const first = data[0];
-    if (first?.RegionName) return <><MdPublic className={styles.icon} /> Region</>;
-    if (first?.GICS_Industry_Name) return <><MdBusiness className={styles.icon} /> Industry</>;
-    if (first?.CategoryName) return <><MdDashboard className={styles.icon} /> Investment Style</>;
-    if (first?.stockName) return <>Stock</>;
-    return "Distribution";
+    if (first?.RegionName)
+      return (
+        <>
+          <MdPublic className={styles.icon} />
+          <span>Region</span>
+        </>
+      );
+    if (first?.GICS_Industry_Name)
+      return (
+        <>
+          <MdBusiness className={styles.icon} />
+          <span>Industry</span>
+        </>
+      );
+    if (first?.CategoryName)
+      return (
+        <>
+          <MdDashboard className={styles.icon} />
+          <span>Investment Style</span>
+        </>
+      );
+    if (first?.stockName) return <span></span>;
+    return <span>Distribution</span>;
   };
 
   const chartData = {
@@ -49,13 +74,18 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
           {
             data: data.map((item) => ({
               x: [item.currentValue, item.projectedValue ?? item.currentValue],
-              y: item.RegionName || item.GICS_Industry_Name || item.CategoryName || item.stockName || "",
+              y:
+                item.RegionName ||
+                item.GICS_Industry_Name ||
+                item.CategoryName ||
+                item.stockName ||
+                "",
             })),
             backgroundColor: (ctx: any) => {
               const index = ctx.dataIndex;
               const base = data[index].currentValue;
               const newVal = data[index].projectedValue ?? base;
-              return newVal >= base ? "#20500A" : "#800000";
+              return newVal >= base ? "rgba(53, 253, 3, 0.75)" : "rgba(255, 156, 156, 1)";
             },
             barThickness: 20,
             borderRadius: 2,
@@ -64,9 +94,14 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
           {
             data: data.map((item) => ({
               x: [0, item.currentValue],
-              y: item.RegionName || item.GICS_Industry_Name || item.CategoryName || item.stockName || "",
+              y:
+                item.RegionName ||
+                item.GICS_Industry_Name ||
+                item.CategoryName ||
+                item.stockName ||
+                "",
             })),
-            backgroundColor: "grey",
+            backgroundColor: "#03bffd",
             barThickness: 20,
             borderRadius: 2,
             borderSkipped: false,
@@ -77,7 +112,7 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
           {
             label: "Current Value",
             data: data.map((item) => item.currentValue),
-            backgroundColor: "#03bffd",
+            backgroundColor: "rgba(53, 253, 3, 0.5)",
             barThickness: 20,
             borderRadius: 2,
             borderSkipped: false,
@@ -124,7 +159,7 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h1>{getTitleIcon()}</h1>
+        <h1 className={styles.headerTitle}>{getTitleIcon()}</h1>
       </div>
       <div className={styles.chart}>
         <Bar data={chartData as any} options={chartOptions} />

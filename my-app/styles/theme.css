@@ -14,6 +14,11 @@
   --color-chart-4: #f56565;
   --color-chart-5: #9f7aea;
   --color-chart-6: #ed64a6;
+
+  /* Added your custom colors */
+  --color-increase: rgba(53, 253, 3, 1);        /* original #35FD03 */
+  --color-reduce: rgba(255, 156, 156, 1); /* original #FF9C9C */
+  --color-current: rgba(3, 191, 253, 1);
 }
 
 /* Dark mode colors */
@@ -27,6 +32,11 @@
     --color-card-bg: #1a202c;
     --color-progress-bg: #2d3748;
     --color-error: #fc8181;
+
+    /* Optional: adjust for dark mode */
+    --color-increase: rgba(53, 253, 3, 0.8);
+    --color-reduce: rgba(255, 156, 156, 0.8);
+    --color-current: rgba(3, 191, 253, 0.8);
   }
 }
 

@@ -46,13 +46,13 @@ const StackedBarChart = ({ data }: StackedBarChartProps) => {
     datasets: [
       {
         data: overlayBarData,
-        backgroundColor: projectedValues.map((value, index) => (value >= currentValues[index] ? 'green' : 'red')),
+        backgroundColor: projectedValues.map((value, index) => (value >= currentValues[index] ? 'rgba(53, 253, 3, 0.75)' : '#FF9C9C')),
         barThickness: 20,
         borderRadius: 2,
       },
       {
         data: greyBarData,
-        backgroundColor: 'grey',
+        backgroundColor: '#03bffd',
         barThickness: 20,
         borderRadius: 2,
         xAxisID: 'x2',
