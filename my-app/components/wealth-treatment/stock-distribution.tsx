@@ -2,6 +2,7 @@
 
 import { Info } from "lucide-react"
 import StackedBarChart from "@/components/ui/stackedbarchart"
+import HorizBarChart from "@/components/ui/horizBarChart"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import styles from "./stock-distribution.module.css"
@@ -21,6 +22,91 @@ interface StockDistributionProps {
   currentPositions: currentPositions[]
   recommendations: recommendations[]
 }
+
+export const regionData = [
+  {
+    RegionName: "North America",
+    currentValue: 0.35,
+    projectedValue: 0.45,
+  },
+  {
+    RegionName: "Europe",
+    currentValue: 0.25,
+    projectedValue: 0.2,
+  },
+  {
+    RegionName: "Asia-Pacific",
+    currentValue: 0.15,
+    projectedValue: 0.2,
+  },
+  {
+    RegionName: "Latin America",
+    currentValue: 0.1,
+    projectedValue: 0.08,
+  },
+  {
+    RegionName: "Middle East & Africa",
+    currentValue: 0.15,
+    projectedValue: 0.07,
+  },
+];
+
+export const industryData = [
+  {
+    GICS_Industry_Name: "Information Technology",
+    currentValue: 0.4,
+    projectedValue: 0.35,
+  },
+  {
+    GICS_Industry_Name: "Healthcare",
+    currentValue: 0.2,
+    projectedValue: 0.25,
+  },
+  {
+    GICS_Industry_Name: "Financials",
+    currentValue: 0.15,
+    projectedValue: 0.18,
+  },
+  {
+    GICS_Industry_Name: "Consumer Discretionary",
+    currentValue: 0.1,
+    projectedValue: 0.12,
+  },
+  {
+    GICS_Industry_Name: "Energy",
+    currentValue: 0.15,
+    projectedValue: 0.1,
+  },
+];
+
+export const styleData = [
+  {
+    CategoryName: "Blue Chip",
+    currentValue: 0.3,
+    projectedValue: 0.25,
+  },
+  {
+    CategoryName: "Large Cap",
+    currentValue: 0.25,
+    projectedValue: 0.3,
+  },
+  {
+    CategoryName: "Mid Cap",
+    currentValue: 0.2,
+    projectedValue: 0.2,
+  },
+  {
+    CategoryName: "Small Cap",
+    currentValue: 0.15,
+    projectedValue: 0.2,
+  },
+  {
+    CategoryName: "Emerging Market",
+    currentValue: 0.1,
+    projectedValue: 0.05,
+  },
+];
+
 
 export function StockDistribution({currentPositions, recommendations}: Partial<StockDistributionProps>) {
   return (
@@ -101,6 +187,11 @@ export function StockDistribution({currentPositions, recommendations}: Partial<S
             
             <TabsContent value="others" className={styles.tabContent}>
               <div className={styles.emptyState}>No other positions</div>
+              <div>
+                <HorizBarChart data={industryData} overlay />
+                <HorizBarChart data={regionData} overlay={false} />
+                <HorizBarChart data={styleData} overlay />
+              </div>
             </TabsContent>
           </Tabs>
         </div>
