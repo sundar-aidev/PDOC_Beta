@@ -27,26 +27,31 @@ interface MultiAssetOverviewProps {
   totalValue: number;
   assets: Asset[];
   avatarUrl: string;
+  treatment: boolean;
 }
 
-export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAssetOverviewProps) {
+export function MultiAssetOverview({
+  totalValue,
+  assets,
+  avatarUrl,
+  treatment = true,
+}: MultiAssetOverviewProps) {
   const router = useRouter();
   const pathname = usePathname();
 
-  // Determine which card should be active from URL
   const activeAsset = useMemo(() => {
-    if (!pathname) return "Stocks"; // fallback
+    if (!pathname) return "Stocks";
     if (pathname.includes("commodities")) return "Commodities";
-    if (pathname.includes("pre-treatment")) return "Cash to Invest";
+    if (pathname.includes("pre-treatment") || pathname.includes("cash")) 
+      return "Cash to Invest";
     if (pathname.includes("bonds")) return "Bonds";
-    if (pathname.includes("stocks") || pathname.includes("treatment")) return "Stocks";
+    if (pathname.includes("stocks") || pathname.includes("treatment"))
+      return "Stocks";
     return "Stocks";
   }, [pathname]);
 
   const formatCurrency = (value: number | undefined): string => {
-    if (typeof value !== "number") {
-      return "-";
-    }
+    if (typeof value !== "number") return "-";
     return value.toLocaleString("de-DE", {
       style: "currency",
       currency: "EUR",
@@ -55,18 +60,20 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
   };
 
   const handleAssetClick = (assetType: string) => {
+    const baseRoute = treatment ? "/treatment" : "/check";
+
     switch (assetType) {
       case "Stocks":
-        router.push("/treatment/stocks");
+        router.push(`${baseRoute}/stocks`);
         break;
       case "Cash to Invest":
-        router.push("/pre-treatment");
+        router.push(treatment ? "/pre-treatment" : "/check/cash");
         break;
       case "Bonds":
-        router.push("/treatment/bonds");
+        router.push(`${baseRoute}/bonds`);
         break;
       case "Commodities":
-        router.push("/treatment/commodities");
+        router.push(`${baseRoute}/commodities`);
         break;
       default:
         break;
@@ -93,7 +100,9 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
             <Avatar src={avatarUrl} alt="Portfolio Avatar" />
             <div>
               <span className={styles.portfolioLabel}>Your Portfolio</span>
-              <span className={styles.portfolioValue}>{formatCurrency(totalValue)}</span>
+              <span className={styles.portfolioValue}>
+                {formatCurrency(totalValue)}
+              </span>
             </div>
           </div>
 
@@ -108,7 +117,10 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                     isActive ? styles.activeCard : styles.inactiveCard
                   }`}
                 >
-                  <div onClick={() => handleAssetClick(asset.type)} style={{ cursor: "pointer" }}>
+                  <div
+                    onClick={() => handleAssetClick(asset.type)}
+                    style={{ cursor: "pointer" }}
+                  >
                     <div className={styles.cardHeader}>
                       <span className={styles.assetType}>{asset.type}</span>
                       <TooltipProvider>
@@ -138,7 +150,9 @@ export function MultiAssetOverview({ totalValue, assets, avatarUrl }: MultiAsset
                             className={styles.progressBar}
                             style={{
                               left: `${asset.toleranceStart}%`,
-                              width: `${asset.toleranceEnd - asset.toleranceStart}%`,
+                              width: `${
+                                asset.toleranceEnd - asset.toleranceStart
+                              }%`,
                             }}
                           />
                           <div
