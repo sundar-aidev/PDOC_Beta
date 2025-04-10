@@ -62,12 +62,33 @@ export default function WealthCheckPage() {
 
   // Mock data for assets donut chart with colors matching Figma
   const assetChartData = [
-    { name: "Apple Inc", value: 8100.78, percentage: 18, color: "#011f2d" },
-    { name: "Nvidia", value: 4500.5, percentage: 10, color: "#01579b" },
-    { name: "Tesla", value: 2700.3, percentage: 6, color: "#0277bd" },
-    { name: "Microsoft", value: 2200.2, percentage: 5, color: "#0288d1" },
-    { name: "Others", value: 22955.0, percentage: 61, color: "#03a9f4" },
+    { stockName: "Apple Inc", value: 8100.78, percentage: 18, color: "#011f2d" },
+    { stockName: "Nvidia", value: 4500.5, percentage: 10, color: "#01579b" },
+    { stockName: "Tesla", value: 2700.3, percentage: 6, color: "#0277bd" },
+    { stockName: "Microsoft", value: 2200.2, percentage: 5, color: "#0288d1" },
+    { stockName: "Others", value: 22955.0, percentage: 61, color: "#03a9f4" },
   ]
+
+const mockStockPositions = [
+  {
+    name: "Apple Inc",
+    quantity: 10,
+    weightage: 10.0,
+    value: 7500.78,
+    recommendation: "Decrease" as const,
+    newValue: 5000.78,
+    newWeightage: 7.0,
+  },
+  {
+    name: "Nvidia",
+    quantity: 10,
+    weightage: 7.0,
+    value: 3500.78,
+    recommendation: "Increase" as const,
+    newValue: 5500.78,
+    newWeightage: 10.0,
+  },
+]
 
   // Mock data for holdings list
   const holdings = [
