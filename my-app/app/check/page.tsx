@@ -76,6 +76,7 @@ export default function WealthCheckPage() {
       name: "Apple Inc",
       percentage: 18,
       isOverweight: true,
+      isUnderweight: false,
       tooltipText: "This holding is overweight in your portfolio",
     },
     {
@@ -83,34 +84,51 @@ export default function WealthCheckPage() {
       name: "Nvidia",
       percentage: 10,
       isOverweight: true,
+      isUnderweight: false,
       tooltipText: "This holding is overweight in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "Tesla",
-      percentage: 6,
+      percentage: 2,
+      isOverweight: false,
+      isUnderweight: true,
+      tooltipText: "This holding is underweight in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "Microsoft",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "SAP",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "LVMH",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "Nestle",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: true,
+      tooltipText: "This holding is balanced in your portfolio",
     },
-  ]
+  ];
+  
 
   // Mock data for portfolio analysis
   const analysisText =

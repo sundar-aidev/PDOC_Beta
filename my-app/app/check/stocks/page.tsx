@@ -76,6 +76,7 @@ export default function WealthCheckPage() {
       name: "Apple Inc",
       percentage: 18,
       isOverweight: true,
+      isUnderweight: false,
       tooltipText: "This holding is overweight in your portfolio",
     },
     {
@@ -83,34 +84,52 @@ export default function WealthCheckPage() {
       name: "Nvidia",
       percentage: 10,
       isOverweight: true,
+      isUnderweight: false,
       tooltipText: "This holding is overweight in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "Tesla",
-      percentage: 6,
+      percentage: 2,
+      isOverweight: false,
+      isUnderweight: true,
+      tooltipText: "This holding is underweight in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "Microsoft",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "SAP",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "LVMH",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
     },
     {
       logo: "/placeholder.svg?height=24&width=24",
       name: "Nestle",
       percentage: 5,
+      isOverweight: false,
+      isUnderweight: true,
+      tooltipText: "This holding is balanced in your portfolio",
     },
-  ]
+  ];
+  
+  
 
   // Mock data for portfolio analysis
   const analysisText =
@@ -154,15 +173,19 @@ export default function WealthCheckPage() {
       <PortfolioSummary {...portfolioSummary} />
       <MultiAssetOverview totalValue={totalValue} assets={mockAssets} avatarUrl="/placeholder.svg" treatment={false} />
 
+      {/* Donut Chart & List of overweighted/underweighted flaggings */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AssetsDonutChart data={assetChartData} title="Assets" />
         <HoldingsList holdings={holdings} title="10" />
       </div>
 
+      {/* Advice Text */}
       <PortfolioAnalysis analysisText={analysisText} iconSrc="/placeholder.svg?height=32&width=32" />
 
+      {/* Horizontal bar chart - Tabs Investment Styles, Region, Industry */}
       <InvestmentStyle categories={investmentStyleCategories} />
 
+      {/* Advice Text + CTA button leading to pre-treatment */}
       <RecommendationBox {...recommendationData} />
     </div>
   )
