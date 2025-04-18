@@ -213,9 +213,11 @@ export default function WealthCheckPage() {
 
       <PortfolioAnalysis analysisText={analysisText} iconSrc="/placeholder.svg?height=32&width=32" />
 
-      <InvestmentStyle categories={investmentStyleCategories} />
-
-      <RecommendationBox {...recommendationData} />
+      {/* Tabs for Horizontal Bar Charts */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <InvestmentStyle categories={investmentStyleCategories} />
+        <RecommendationBox {...recommendationData} />
+      </div>
     </div>
   )
 }
