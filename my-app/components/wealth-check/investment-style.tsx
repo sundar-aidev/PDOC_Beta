@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Info } from "lucide-react"
+import HorizBarChart from "@/components/ui/horizBarChart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import styles from "./investment-style.module.css"
@@ -19,6 +20,23 @@ interface InvestmentStyleProps {
     industry: StyleCategory[]
   }
 }
+
+export const regionData = [ 
+  { RegionName: "North America", currentValue: 50, projectedValue: 20 },
+  { RegionName: "Europe", currentValue: 30, projectedValue: 40 },
+  { RegionName: "Asia", currentValue: 20, projectedValue: 30 },
+ ];
+export const industryData = [ 
+  { GICS_Industry_Name: "Technology", currentValue: 40, projectedValue: 30 },
+  { GICS_Industry_Name: "Healthcare", currentValue: 30, projectedValue: 20 },
+  { GICS_Industry_Name: "Finance", currentValue: 20, projectedValue: 50 },
+];
+export const styleData = [ 
+  { CategoryName: "Growth", currentValue: 60, projectedValue: 40 },
+  { CategoryName: "Value", currentValue: 30, projectedValue: 20 },
+  { CategoryName: "Blend", currentValue: 10, projectedValue: 40 },
+ ];
+
 
 export function InvestmentStyle({ categories }: InvestmentStyleProps) {
   const [activeTab, setActiveTab] = useState("style")
@@ -52,46 +70,24 @@ export function InvestmentStyle({ categories }: InvestmentStyleProps) {
         </TabsList>
 
         <TabsContent value="style" className={styles.tabsContent}>
-          <div className={styles.categoriesList}>
-            {categories.style.map((category, index) => (
-              <CategoryBar key={index} category={category} />
-            ))}
+          <div>
+            <HorizBarChart data={styleData} overlay />
           </div>
         </TabsContent>
 
         <TabsContent value="region" className={styles.tabsContent}>
-          <div className={styles.categoriesList}>
-            {categories.region.map((category, index) => (
-              <CategoryBar key={index} category={category} />
-            ))}
+          <div>
+            <HorizBarChart data={regionData} overlay />
           </div>
         </TabsContent>
 
         <TabsContent value="industry" className={styles.tabsContent}>
-          <div className={styles.categoriesList}>
-            {categories.industry.map((category, index) => (
-              <CategoryBar key={index} category={category} />
-            ))}
+          <div>
+            <HorizBarChart data={styleData} overlay />
           </div>
         </TabsContent>
       </Tabs>
 
-      <div className={styles.percentageScale}>
-        <div className={styles.scaleLabels}>
-          <span>0%</span>
-          <span>25%</span>
-          <span>50%</span>
-          <span>75%</span>
-          <span>100%</span>
-        </div>
-        <div className={styles.scaleLines}>
-          <div className={styles.scaleLine} />
-          <div className={styles.scaleLine} />
-          <div className={styles.scaleLine} />
-          <div className={styles.scaleLine} />
-          <div className={styles.scaleLine} />
-        </div>
-      </div>
     </div>
   )
 }
