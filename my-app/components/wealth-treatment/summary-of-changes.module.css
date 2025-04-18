@@ -1,0 +1,138 @@
+.container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+  }
+  
+  .tabs {
+    margin-top: 1rem;
+  }
+  
+  .tabList {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .tabTrigger {
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+    background-color: hsl(var(--muted));
+    color: hsl(var(--foreground));
+  }
+  
+  .tabTrigger[data-state="active"] {
+    background-color: hsl(var(--primary));
+    color: white;
+  }
+  
+  .sectionWrapper {
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .beforeSection {
+    background-color: #f4f4f4;
+  }
+  
+  .afterSection {
+    background-color: #e1f5fe;
+  }
+  
+  .sectionHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+  }
+  
+  .sectionHeader {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #333;
+  }
+  
+  .speechBubbleWrapperRight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .speechBubble {
+    background: #ffffff;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 440px;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .speechTail {
+    content: "";
+    position: absolute;
+    right: -16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-left: 16px solid #ffffff;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+  }
+  
+  .icon {
+    width: 32px;
+    height: 32px;
+    background: url("/placeholder.svg") no-repeat center center;
+    background-size: cover;
+  }
+  
+  .chartRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: nowrap;
+  }
+  
+  .chartRow :global(.recharts-wrapper) {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+  
+  .chartRow > div {
+    flex: 1 1 33%;
+  }
+  
+  .placeholder {
+    padding: 1rem;
+    border: 1px dashed hsl(var(--border));
+    text-align: center;
+    color: hsl(var(--muted-foreground));
+    border-radius: 0.5rem;
+    background-color: hsl(var(--muted));
+  }
+  

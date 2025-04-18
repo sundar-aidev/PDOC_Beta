@@ -201,6 +201,7 @@ export default function WealthCheckPage() {
 
   return (
     <div className="container mx-auto px-4 py-8">
+      {/* Top row: Profile Picture + Portfolio Score + Pdoc Speech Bubble */}
       <PortfolioSummary {...portfolioSummary} />
       {/* Metric cards */}
       <MultiAssetOverview totalValue={totalValue} assets={mockAssets} avatarUrl="/placeholder.svg" treatment={false} />
@@ -213,7 +214,8 @@ export default function WealthCheckPage() {
 
       <PortfolioAnalysis analysisText={analysisText} iconSrc="/placeholder.svg?height=32&width=32" />
 
-      {/* Tabs for Horizontal Bar Charts */}
+      {/* Left side: Tabs for Horizontal Bar Charts 
+          Right Side: Text box + CAT to Pre-Treatment */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <InvestmentStyle categories={investmentStyleCategories} />
         <RecommendationBox {...recommendationData} />
