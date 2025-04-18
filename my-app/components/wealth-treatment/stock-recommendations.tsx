@@ -98,13 +98,13 @@ export function StockRecommendations() {
           <TableHeader>
             <TableRow>
               <TableHead>Asset</TableHead>
-              <TableHead>Current Quantity</TableHead>
-              <TableHead>Current Weightage</TableHead>
-              <TableHead>Current Value</TableHead>
+              <TableHead>Quantity</TableHead>
+              <TableHead>Weight</TableHead>
+              <TableHead>Value</TableHead>
               <TableHead>Recommendation</TableHead>
               <TableHead className={styles.adjustmentColumn}>Adjust New Quantities</TableHead>
               <TableHead>New Value</TableHead>
-              <TableHead>New Weightage</TableHead>
+              <TableHead>New Weight</TableHead>
               <TableHead className={styles.actionsColumn}>Actions</TableHead>
             </TableRow>
           </TableHeader>

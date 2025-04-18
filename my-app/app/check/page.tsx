@@ -127,6 +127,38 @@ export default function WealthCheckPage() {
       isUnderweight: true,
       tooltipText: "This holding is balanced in your portfolio",
     },
+    {
+      logo: "/placeholder.svg?height=24&width=24",
+      name: "Coca Cola",
+      percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
+    },
+    {
+      logo: "/placeholder.svg?height=24&width=24",
+      name: "Pepsi",
+      percentage: 5,
+      isOverweight: false,
+      isUnderweight: false,
+      tooltipText: "This holding is balanced in your portfolio",
+    },
+    {
+      logo: "/placeholder.svg?height=24&width=24",
+      name: "IBM",
+      percentage: 5,
+      isOverweight: false,
+      isUnderweight: true,
+      tooltipText: "This holding is balanced in your portfolio",
+    },
+    {
+      logo: "/placeholder.svg?height=24&width=24",
+      name: "Spotify",
+      percentage: 5,
+      isOverweight: false,
+      isUnderweight: true,
+      tooltipText: "This holding is balanced in your portfolio",
+    },
   ];
   
 
@@ -170,8 +202,10 @@ export default function WealthCheckPage() {
   return (
     <div className="container mx-auto px-4 py-8">
       <PortfolioSummary {...portfolioSummary} />
+      {/* Metric cards */}
       <MultiAssetOverview totalValue={totalValue} assets={mockAssets} avatarUrl="/placeholder.svg" treatment={false} />
 
+      {/* Donut Chart & Flagged bar charts (Holding List) */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <AssetsDonutChart data={assetChartData} title="Assets" />
         <HoldingsList holdings={holdings} title="10" />

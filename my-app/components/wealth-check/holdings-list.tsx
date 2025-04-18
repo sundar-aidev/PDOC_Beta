@@ -21,7 +21,7 @@ interface Holding {
 
 interface HoldingsListProps {
   holdings: Holding[]
-  title: string
+  title: string 
 }
 
 export function HoldingsList({ holdings, title }: HoldingsListProps) {
