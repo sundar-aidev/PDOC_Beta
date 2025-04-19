@@ -3,6 +3,7 @@
 import { Info } from "lucide-react";
 import HorizBarChart from "@/components/ui/horizBarChart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import SpeechBubble from "@/components/ui/speech-bubble";
 import {
   Tooltip,
   TooltipContent,
@@ -62,36 +63,28 @@ export function SummaryOfChanges() {
           <div className={`${styles.sectionWrapper} ${styles.beforeSection}`}>
             <div className={styles.sectionHeaderRow}>
               <div className={styles.sectionHeader}>Before</div>
-              <div className={styles.speechBubbleWrapperRight}>
-                <div className={styles.speechBubble}>
-                  Your Portfolio is generally well balanced. However, you could maximise your cash by increasing your stocks. Lets understand better below.
-                  <div className={styles.speechTail} />
-                </div>
-                <div className={styles.icon}></div>
-              </div>
+              <SpeechBubble side="right">
+                Your Portfolio is generally well balanced. However, you could maximise your cash by increasing your stocks. Let's understand better below.
+              </SpeechBubble>
             </div>
             <div className={styles.chartRow}>
-              <HorizBarChart data={industryData} labelKey="GICS_Industry_Name" isBefore={true} />
-              <HorizBarChart data={styleData} labelKey="CategoryName" isBefore={true} />
-              <HorizBarChart data={regionData} labelKey="RegionName" isBefore={true} />
+              <HorizBarChart data={industryData} isBefore={true} />
+              <HorizBarChart data={styleData} isBefore={true} />
+              <HorizBarChart data={regionData}  isBefore={true} />
             </div>
           </div>
 
           <div className={`${styles.sectionWrapper} ${styles.afterSection}`}>
             <div className={styles.sectionHeaderRow}>
               <div className={styles.sectionHeader}>After</div>
-              <div className={styles.speechBubbleWrapperRight}>
-                <div className={styles.speechBubble}>
-                  Your Portfolio is generally well balanced. However, you could maximise your cash by increasing your stocks. Lets understand better below.
-                  <div className={styles.speechTail} />
-                </div>
-                <div className={styles.icon}></div>
-              </div>
+              <SpeechBubble side="left">
+                Your Portfolio is generally well balanced. However, you could maximise your cash by increasing your stocks. Let's understand better below.
+              </SpeechBubble>
             </div>
             <div className={styles.chartRow}>
-              <HorizBarChart data={industryData} labelKey="GICS_Industry_Name" isBefore={false} />
-              <HorizBarChart data={styleData} labelKey="CategoryName" isBefore={false} />
-              <HorizBarChart data={regionData} labelKey="RegionName" isBefore={false} />
+              <HorizBarChart data={industryData} isBefore={false} />
+              <HorizBarChart data={styleData} isBefore={false} />
+              <HorizBarChart data={regionData} isBefore={false} />
             </div>
           </div>
         </TabsContent>
