@@ -1,0 +1,48 @@
+.container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    background-color: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+  }
+  
+  .tableWrapper {
+    position: relative;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .tableWrapper table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .tableWrapper th,
+  .tableWrapper td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  
+  .tableWrapper th {
+    text-align: left;
+    font-weight: 600;
+    color: hsl(var(--muted-foreground));
+  }
+  
+  .tableWrapper td {
+    color: hsl(var(--foreground));
+  }
+  
