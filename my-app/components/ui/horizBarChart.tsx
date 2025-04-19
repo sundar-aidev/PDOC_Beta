@@ -1,3 +1,4 @@
+// HorizBarChart.tsx (Modified)
 "use client";
 
 import styles from "./horizBarChart.module.css";
@@ -27,9 +28,11 @@ interface DataItem {
 interface HorizBarChartProps {
   data: DataItem[];
   overlay?: boolean;
+  barColor?: string; // <- new prop
+  isBefore?: boolean; // <- optional fallback logic
 }
 
-const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) => {
+const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false, barColor, isBefore }) => {
   const getLabels = () =>
     data.map(
       (item) =>
@@ -67,6 +70,8 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
     return <span>Distribution</span>;
   };
 
+  const finalColor = barColor || (isBefore ? "#b0b0b0" : "#03a9f4");
+
   const chartData = {
     labels: getLabels(),
     datasets: overlay
@@ -88,7 +93,12 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
               return newVal >= base ? "rgba(53, 253, 3, 0.75)" : "rgba(255, 156, 156, 1)";
             },
             barThickness: 20,
-            borderRadius: 2,
+            borderRadius: {
+              topLeft: 0,
+              bottomLeft: 0,
+              topRight: 2,
+              bottomRight: 2,
+            },
             borderSkipped: false,
           },
           {
@@ -101,9 +111,14 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
                 item.stockName ||
                 "",
             })),
-            backgroundColor: "#03bffd",
+            backgroundColor: finalColor,
             barThickness: 20,
-            borderRadius: 2,
+            borderRadius: {
+              topLeft: 0,
+              bottomLeft: 0,
+              topRight: 2,
+              bottomRight: 2,
+            },
             borderSkipped: false,
             yAxisID: "y2",
           },
@@ -112,9 +127,14 @@ const HorizBarChart: React.FC<HorizBarChartProps> = ({ data, overlay = false }) 
           {
             label: "Current Value",
             data: data.map((item) => item.currentValue),
-            backgroundColor: "rgba(53, 253, 3, 0.5)",
+            backgroundColor: finalColor,
             barThickness: 20,
-            borderRadius: 2,
+            borderRadius: {
+              topLeft: 0,
+              bottomLeft: 0,
+              topRight: 2,
+              bottomRight: 2,
+            },
             borderSkipped: false,
           },
         ],
