@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { MultiAssetOverview } from "@/components/wealth-treatment/multi-asset-overview";
 import { SummaryOfChanges } from "@/components/wealth-treatment/summary-of-changes";
-import { MedicationPlanTable, MedicationPlanItem } from "@/components/wealth-treatment/medication-plan-table";
+import { MedicationPlanTable} from "@/components/wealth-treatment/medication-plan-table";
 import { Button } from "@/components/ui/button";
 import Modal from "@/components/ui/modal";
 

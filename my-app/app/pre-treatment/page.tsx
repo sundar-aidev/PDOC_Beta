@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback, useRef } from "react"
+import { MultiAssetOverview } from "@/components/wealth-treatment/multi-asset-overview";
 import { ChatMessage } from "@/components/pre-treatment/ChatMessage"
 import { PortfolioSummary } from "@/components/pre-treatment/PortfolioSummary"
 import { AssetAllocationCards } from "@/components/pre-treatment/AssetAllocationCards"
@@ -33,6 +34,14 @@ interface AssetAllocation {
 }
 
 export default function PreTreatmentPage() {
+
+  const mockAssets = [
+    { type: "Cash to Invest", value: 35000, formattedValue: "35.0K", toleranceStart: 30, toleranceEnd: 50, idealAmount: 40000, currency: "EUR" },
+    { type: "Stocks", value: 40456.78, formattedValue: "€40.5K", toleranceStart: 60, toleranceEnd: 80, idealAmount: 45000, currency: "EUR" },
+    { type: "Bonds", value: 4000, formattedValue: "4.0K", toleranceStart: 20, toleranceEnd: 40, idealAmount: 5000, currency: "EUR" },
+    { type: "Commodities", value: 1000, formattedValue: "1.0K", toleranceStart: 70, toleranceEnd: 90, idealAmount: 1500, currency: "EUR" },
+  ];
+
   // State for tracking the conversation stage
   const [stage, setStage] = useState<ConversationStage>(ConversationStage.GREETING)
 
@@ -51,7 +60,7 @@ export default function PreTreatmentPage() {
     stocks: 80,
     bonds: 0,
     commodities: 0,
-  }
+  } 
 
   // Use a ref to track whether we're updating from the slider
   const updatingFromSliderRef = useRef(false)
@@ -261,24 +270,12 @@ export default function PreTreatmentPage() {
     <div className={styles.container}>
       <div className={styles.chatContainer}>
         {/* Welcome message */}
-        <ChatMessage sender="system" isVisible={stage >= ConversationStage.GREETING}>
-          <h1 className={styles.welcomeHeading}>
-            Hi Jane, ready for your Treatment? Let&apos;s double check some information before we begin.
-          </h1>
-        </ChatMessage>
+        <h1 className={styles.welcomeHeading}>
+          Hi Jane, ready for your Treatment? Let&apos;s double check some information before we begin.
+        </h1>
 
         {/* Portfolio summary */}
-        <ChatMessage sender="system" isVisible={stage >= ConversationStage.PORTFOLIO_SUMMARY}>
-          <PortfolioSummary
-            portfolioName="Your Portfolio"
-            totalValue={formatCurrency(totalPortfolio)}
-            avatarSrc="/placeholder.svg?height=64&width=64"
-          />
-
-          <div className={styles.spacer}></div>
-
-          <AssetAllocationCards allocations={currentAllocations()} />
-        </ChatMessage>
+        <MultiAssetOverview totalValue={75456.78} assets={mockAssets} avatarUrl="/placeholder.svg" />
 
         {/* Portfolio analysis */}
         <ChatMessage sender="system" isVisible={stage >= ConversationStage.PORTFOLIO_ANALYSIS}>
@@ -315,9 +312,7 @@ export default function PreTreatmentPage() {
           <p className={styles.questionText}>
             Do you want to manually change your asset allocation or fully take our diagnosis?
           </p>
-          <button className={styles.diagnosisButton} onClick={handleAllocationQuestion}>
-            I&apos;ll take your diagnosis
-          </button>
+
         </ChatMessage>
 
         {/* Asset allocation sliders */}
