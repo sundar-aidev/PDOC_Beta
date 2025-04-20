@@ -13,7 +13,7 @@ const navigation = [
       { icon: <Home size={20} />, label: "Home", href: "/" },
       { icon: <ClipboardCheck size={20} />, label: "Check", href: "/check" },
       { icon: <Syringe size={20} />, label: "Treatment", href: "/treatment" },
-      { icon: <BarChart2 size={20} />, label: "Plan", href: "/plan" },
+      { icon: <BarChart2 size={20} />, label: "Plan", href: "/medication-plan" },
     ],
   },
   {

@@ -1,9 +1,13 @@
-import { MultiAssetOverview } from "@/components/wealth-treatment/multi-asset-overview"
-import { StockDistribution } from "@/components/wealth-treatment/stock-distribution"
-import { StockRecommendations } from "@/components/wealth-treatment/stock-recommendations"
-import { NewStockRecommendations } from "@/components/wealth-treatment/new-stock-recommendations"
+"use client";
 
-const totalValue = 75000
+import { useRouter } from "next/navigation";
+import { MultiAssetOverview } from "@/components/wealth-treatment/multi-asset-overview";
+import { StockDistribution } from "@/components/wealth-treatment/stock-distribution";
+import { StockRecommendations } from "@/components/wealth-treatment/stock-recommendations";
+import { NewStockRecommendations } from "@/components/wealth-treatment/new-stock-recommendations";
+import { Button } from "@/components/ui/button"; // ✅ Import Button
+
+const totalValue = 75000;
 
 const mockAssets = [
   {
@@ -42,7 +46,7 @@ const mockAssets = [
     idealAmount: 1500,
     currency: "EUR",
   },
-]
+];
 
 const mockPositions = [
   { symbol: "AAPL", currentValue: 75, projectedValue: 25 },
@@ -51,7 +55,7 @@ const mockPositions = [
   { symbol: "TSLA", currentValue: 45, projectedValue: 15 },
   { symbol: "GOOGL", currentValue: 35, projectedValue: 50 },
   { symbol: "AMZN", currentValue: 30, projectedValue: 60 },
-]
+];
 
 const mockRecommendations = [
   { symbol: "APP", percentage: 65 },
@@ -59,7 +63,7 @@ const mockRecommendations = [
   { symbol: "HOOD", percentage: 35 },
   { symbol: "BYRN", percentage: 25 },
   { symbol: "CDXC", percentage: 15 },
-]
+];
 
 const mockStockPositions = [
   {
@@ -80,21 +84,24 @@ const mockStockPositions = [
     newValue: 5500.78,
     newWeightage: 10.0,
   },
-]
+];
 
 export default function Page() {
+  const router = useRouter(); // ✅ Add router
+
   return (
     <div className="container mx-auto p-4 space-y-6">
-      {/* Top Section - Metric Cards etc. */}
       <MultiAssetOverview totalValue={totalValue} assets={mockAssets} avatarUrl="/placeholder.svg" />
-
-      {/* Overlayed BarChart Section with tabs: Stocks, Sector, Region, Invest. Styles */}
       <StockDistribution currentPositions={mockPositions} recommendations={mockRecommendations} />
-      
-      {/* Table of Recommendations */}
       <StockRecommendations positions={mockStockPositions} />
       <NewStockRecommendations />
-    </div>
-  )
-}
 
+      {/* ✅ Proceed Button */}
+      <div className="flex justify-end mt-6">
+        <Button variant="secondary" size="md" onClick={() => router.push("/medication-plan")}>
+          Proceed to Medication Plan
+        </Button>
+      </div>
+    </div>
+  );
+}
