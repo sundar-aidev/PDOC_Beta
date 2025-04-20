@@ -1,50 +1,62 @@
-import type React from "react"
-import Image from "next/image"
-import styles from "./ChatMessage.module.css"
+"use client";
 
-export type MessageSender = "system" | "user" | "assistant"
+import React from "react";
+import Image from "next/image";
+import styles from "./ChatMessage.module.css";
+
+export type MessageSender = "system" | "user" | "assistant";
 
 interface ChatMessageProps {
-  children: React.ReactNode
-  sender: MessageSender
-  avatar?: string
-  className?: string
-  isVisible?: boolean
+  children: React.ReactNode;
+  sender: MessageSender;
+  avatar?: string;
+  className?: string;
+  isVisible?: boolean;
 }
 
-export function ChatMessage({ children, sender, avatar, className = "", isVisible = true }: ChatMessageProps) {
-  if (!isVisible) return null
+export function ChatMessage({
+  children,
+  sender,
+  avatar = "/placeholder.svg",
+  className = "",
+  isVisible = true,
+}: ChatMessageProps) {
+  if (!isVisible) return null;
+
+  const side = sender === "user" ? "right" : "left";
 
   return (
-    <div className={`${styles.messageContainer} ${styles[sender]} ${className}`}>
-      {sender === "assistant" && (
-        <div className={styles.avatarContainer}>
-          <div className={styles.assistantAvatar}>
-            <Image
-              src="/placeholder.svg?height=40&width=40"
-              alt="Assistant"
-              width={40}
-              height={40}
-              className={styles.avatar}
-            />
-          </div>
-        </div>
-      )}
-
-      {sender === "user" && (
-        <div className={styles.avatarContainer}>
+    <div className={`${styles.wrapper} ${styles[side]} ${className}`}>
+      {side === "left" && (
+        <div className={styles.logoWrapper}>
           <Image
-            src={avatar || "/placeholder.svg?height=40&width=40"}
-            alt="User avatar"
+            src={avatar}
+            alt={`${sender} avatar`}
             width={40}
             height={40}
-            className={styles.avatar}
+            className={styles.logo}
           />
         </div>
       )}
 
-      <div className={styles.messageContent}>{children}</div>
-    </div>
-  )
-}
+      <div className={`${styles.bubbleWrapper} ${styles[`${side}Align`]}`}>
+        <div className={`${styles.bubble} ${styles[sender]}`}>
+          {children}
+          <div className={`${styles.tail} ${side === "right" ? styles.rightTail : styles.leftTail}`} />
+        </div>
+      </div>
 
+      {side === "right" && (
+        <div className={styles.logoWrapper}>
+          <Image
+            src={avatar}
+            alt={`${sender} avatar`}
+            width={40}
+            height={40}
+            className={styles.logo}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
