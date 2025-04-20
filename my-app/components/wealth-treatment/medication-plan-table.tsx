@@ -11,10 +11,13 @@ import {
 } from "@/components/ui/table";
 
 export interface MedicationPlanRow {
-  priority: string;
+  priority: number;
   asset: string;
+  action: "Buy" | "Sell";
   quantity: number;
   priceRange: string;
+  bid: number;
+  ask: number;
   spread: string;
 }
 
@@ -34,18 +37,32 @@ export function MedicationPlanTable({ data }: MedicationPlanTableProps) {
             <TableRow>
               <TableHead>Priority</TableHead>
               <TableHead>Asset</TableHead>
+              <TableHead>Action</TableHead>
               <TableHead>Quantity</TableHead>
               <TableHead>Price Range</TableHead>
+              <TableHead colSpan={3} className={styles.spreadHeader}>Spread Calculator</TableHead>
+            </TableRow>
+            <TableRow>
+              <TableHead></TableHead>
+              <TableHead></TableHead>
+              <TableHead></TableHead>
+              <TableHead></TableHead>
+              <TableHead></TableHead>
+              <TableHead>Bid</TableHead>
+              <TableHead>Ask</TableHead>
               <TableHead>Spread</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {data.map((row, idx) => (
               <TableRow key={idx}>
-                <TableCell>{row.priority}</TableCell>
+                <TableCell>{row.priority}.</TableCell>
                 <TableCell>{row.asset}</TableCell>
+                <TableCell style={{ color: row.action === "Buy" ? "#22c55e" : "#f87171", fontWeight: 600 }}>{row.action}</TableCell>
                 <TableCell>{row.quantity}</TableCell>
                 <TableCell>{row.priceRange}</TableCell>
+                <TableCell>{row.bid.toFixed(2)}</TableCell>
+                <TableCell>{row.ask.toFixed(2)}</TableCell>
                 <TableCell>{row.spread}</TableCell>
               </TableRow>
             ))}
@@ -55,11 +72,3 @@ export function MedicationPlanTable({ data }: MedicationPlanTableProps) {
     </div>
   );
 }
-
-// Example usage:
-// import { MedicationPlanTable, MedicationPlanRow } from "./medication-plan-table";
-// const mockPlan: MedicationPlanRow[] = [
-//   { priority: "High", asset: "Insulin", quantity: 2, priceRange: "$20 - $30", spread: "Wide" },
-//   { priority: "Medium", asset: "Vitamin D", quantity: 1, priceRange: "$10 - $15", spread: "Narrow" },
-// ];
-// <MedicationPlanTable data={mockPlan} />

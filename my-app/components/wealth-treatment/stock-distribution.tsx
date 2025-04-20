@@ -84,7 +84,7 @@ export function StockDistribution({
             <TabsContent value="positions" className={styles.tabContent}>
               <div className={styles.currentStocksPortfolioSection}>
                 <h4 className={styles.subtitle}>Current Positions</h4>
-                <StackedBarChart data={currentPositions} />
+                <StackedBarChart data={currentPositions} overlay={true} />
               </div>
 
               <div className={styles.recommendationsSection}>

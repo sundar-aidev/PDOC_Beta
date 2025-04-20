@@ -2,6 +2,7 @@
 
 import { Info } from "lucide-react";
 import HorizBarChart from "@/components/ui/horizBarChart";
+import StackedBarChart from "@/components/ui/stackedbarchart";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SpeechBubble from "@/components/ui/speech-bubble";
 import {
@@ -12,31 +13,29 @@ import {
 } from "@/components/ui/tooltip";
 import styles from "./summary-of-changes.module.css";
 
-export const regionData = [
-  { RegionName: "Small Caps", currentValue: 30, projectedValue: 40 },
-  { RegionName: "Large Caps", currentValue: 20, projectedValue: 25 },
-  { RegionName: "Blue Chip", currentValue: 10, projectedValue: 20 },
-  { RegionName: "Emerging Markets", currentValue: 30, projectedValue: 10 },
-  { RegionName: "Dividends", currentValue: 10, projectedValue: 5 },
-];
+interface DataItem {
+  RegionName?: string;
+  GICS_Industry_Name?: string;
+  CategoryName?: string;
+  stockName?: string;
+  currentValue: number;
+  projectedValue: number;
+}
 
-export const industryData = [
-  { GICS_Industry_Name: "Small Caps", currentValue: 30, projectedValue: 40 },
-  { GICS_Industry_Name: "Large Caps", currentValue: 20, projectedValue: 25 },
-  { GICS_Industry_Name: "Blue Chip", currentValue: 10, projectedValue: 20 },
-  { GICS_Industry_Name: "Emerging Markets", currentValue: 30, projectedValue: 10 },
-  { GICS_Industry_Name: "Dividends", currentValue: 10, projectedValue: 5 },
-];
+interface StockPosition {
+  symbol: string;
+  currentValue: number;
+  projectedValue: number;
+}
 
-export const styleData = [
-  { CategoryName: "Small Caps", currentValue: 30, projectedValue: 40 },
-  { CategoryName: "Large Caps", currentValue: 20, projectedValue: 25 },
-  { CategoryName: "Blue Chip", currentValue: 10, projectedValue: 20 },
-  { CategoryName: "Emerging Markets", currentValue: 30, projectedValue: 10 },
-  { CategoryName: "Dividends", currentValue: 10, projectedValue: 5 },
-];
+interface SummaryOfChangesProps {
+  industryData: DataItem[];
+  styleData: DataItem[];
+  regionData: DataItem[];
+  stockPositions: StockPosition[];
+}
 
-export function SummaryOfChanges() {
+export function SummaryOfChanges({ industryData, styleData, regionData, stockPositions }: SummaryOfChangesProps) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -70,7 +69,7 @@ export function SummaryOfChanges() {
             <div className={styles.chartRow}>
               <HorizBarChart data={industryData} isBefore={true} />
               <HorizBarChart data={styleData} isBefore={true} />
-              <HorizBarChart data={regionData}  isBefore={true} />
+              <HorizBarChart data={regionData} isBefore={true} />
             </div>
           </div>
 
@@ -90,7 +89,29 @@ export function SummaryOfChanges() {
         </TabsContent>
 
         <TabsContent value="positions">
-          <div className={styles.placeholder}>Individual Positions content goes here.</div>
+          <div className={`${styles.sectionWrapper} ${styles.beforeSection}`}>
+            <div className={styles.sectionHeaderRow}>
+              <div className={styles.sectionHeader}>Before</div>
+              <SpeechBubble side="right">
+                Your Portfolio is generally well balanced. However, you could maximise your cash by increasing your stocks. Let's understand better below.
+              </SpeechBubble>
+            </div>
+            <div className={styles.chartRow}>
+              <StackedBarChart data={stockPositions} isBefore={true} />
+            </div>
+          </div>
+
+          <div className={`${styles.sectionWrapper} ${styles.afterSection}`}>
+            <div className={styles.sectionHeaderRow}>
+              <div className={styles.sectionHeader}>After</div>
+              <SpeechBubble side="left">
+                Your Portfolio is generally well balanced. However, you could maximise your cash by increasing your stocks. Let's understand better below.
+              </SpeechBubble>
+            </div>
+            <div className={styles.chartRow}>
+              <StackedBarChart data={stockPositions} isBefore={false} />
+            </div>
+          </div>
         </TabsContent>
       </Tabs>
     </div>
