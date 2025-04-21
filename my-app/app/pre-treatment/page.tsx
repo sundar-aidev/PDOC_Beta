@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
+import { useRouter } from "next/navigation";
 import { MultiAssetOverview } from "@/components/wealth-treatment/multi-asset-overview";
 import { ChatMessage } from "@/components/pre-treatment/ChatMessage";
 import { CashInput } from "@/components/pre-treatment/CashInput";
 import { AssetAllocationGrid } from "@/components/pre-treatment/AssetAllocationGrid";
-import { ActionButton } from "@/components/pre-treatment/ActionButton";
+import { SkeletonLoader } from "@/components/ui/SkeletonLoader";
 import styles from "./page.module.css";
 
 enum ConversationStage {
@@ -30,6 +31,8 @@ interface AssetAllocation {
 }
 
 export default function PreTreatmentPage() {
+  const router = useRouter();
+
   const mockAssets = [
     { type: "Cash to Invest", value: 35000, formattedValue: "35.0K", toleranceStart: 30, toleranceEnd: 50, idealAmount: 40000, currency: "EUR" },
     { type: "Stocks", value: 40456.78, formattedValue: "€40.5K", toleranceStart: 60, toleranceEnd: 80, idealAmount: 45000, currency: "EUR" },
@@ -43,6 +46,7 @@ export default function PreTreatmentPage() {
   const [bonds, setBonds] = useState(4000);
   const [commodities, setCommodities] = useState(1000);
   const [totalPortfolio, setTotalPortfolio] = useState(75500);
+  const [isLoading, setIsLoading] = useState(false);
 
   const recommendedPercentages = {
     cash: 20,
@@ -65,33 +69,6 @@ export default function PreTreatmentPage() {
       maximumFractionDigits: 2,
     }).format(value);
   };
-
-  const currentAllocations = useCallback(() => [
-    {
-      title: "Cash to Invest",
-      value: formatCurrencyDisplay(cashToInvest),
-      percentage: Math.round((cashToInvest / totalPortfolio) * 100),
-      tooltipText: "Your available cash to invest",
-    },
-    {
-      title: "Stocks",
-      value: formatCurrencyDisplay(stocks),
-      percentage: Math.round((stocks / totalPortfolio) * 100),
-      tooltipText: "Your stock allocation",
-    },
-    {
-      title: "Bonds",
-      value: formatCurrencyDisplay(bonds),
-      percentage: Math.round((bonds / totalPortfolio) * 100),
-      tooltipText: "Your bond allocation",
-    },
-    {
-      title: "Commodities",
-      value: formatCurrencyDisplay(commodities),
-      percentage: Math.round((commodities / totalPortfolio) * 100),
-      tooltipText: "Your commodities allocation",
-    },
-  ], [cashToInvest, stocks, bonds, commodities, totalPortfolio]);
 
   const assetAllocations = useCallback(() => [
     {
@@ -132,7 +109,6 @@ export default function PreTreatmentPage() {
     },
   ], [cashToInvest, stocks, bonds, commodities, totalPortfolio]);
 
-  // Faster chat progression timing
   useEffect(() => {
     const transitionDelays = {
       [ConversationStage.GREETING]: 800,
@@ -194,66 +170,79 @@ export default function PreTreatmentPage() {
     }
   }, [cashToInvest, stocks, bonds, commodities]);
 
+  const handleBeginTreatment = () => {
+    setIsLoading(true);
+    setTimeout(() => {
+      router.push("/treatment");
+    }, 2000);
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.chatContainer}>
-        <h1 className={styles.welcomeHeading}>
-          Hi Jane, ready for your Treatment? Let&apos;s double check some information before we begin.
-        </h1>
 
-        <MultiAssetOverview totalValue={75456.78} assets={mockAssets} avatarUrl="/placeholder.svg" />
+        {isLoading ? (
+          <SkeletonLoader />
+        ) : (
+          <>
+            <h1 className={styles.welcomeHeading}>
+              Hi Jane, ready for your Treatment? Let&apos;s double check some information before we begin.
+            </h1>
+            <MultiAssetOverview totalValue={75456.78} assets={mockAssets} avatarUrl="/placeholder.svg" />
 
-        <ChatMessage sender="system" isVisible={stage >= ConversationStage.PORTFOLIO_ANALYSIS}>
-          <p className={styles.analysisText}>
-            Your portfolio is underweight in stocks. Increasing your allocation to stocks aligns with the recommended
-            balance, ensuring a stronger foundation for growth while maintaining diversification.
-          </p>
-        </ChatMessage>
+            <ChatMessage sender="system" isVisible={stage >= ConversationStage.PORTFOLIO_ANALYSIS}>
+              <p className={styles.analysisText}>
+                Your portfolio is underweight in stocks. Increasing your allocation to stocks aligns with the recommended
+                balance, ensuring a stronger foundation for growth while maintaining diversification.
+              </p>
+            </ChatMessage>
 
-        <ChatMessage sender="assistant" isVisible={stage >= ConversationStage.CASH_QUESTION}>
-          <p className={styles.questionText}>
-            Has there been any changes to the cash you&apos;re willing to invest?
-            <br />
-            Currently you have <span className={styles.highlightedText}>€{cashToInvest.toLocaleString()}</span>.
-          </p>
-        </ChatMessage>
+            <ChatMessage sender="assistant" isVisible={stage >= ConversationStage.CASH_QUESTION}>
+              <p className={styles.questionText}>
+                Has there been any changes to the cash you&apos;re willing to invest?
+                <br />
+                Currently you have <span className={styles.highlightedText}>€{cashToInvest.toLocaleString()}</span>.
+              </p>
+            </ChatMessage>
 
-        <div className={styles.userInputContainer}>
-          <ChatMessage
-            sender="user"
-            avatar="/placeholder.svg?height=40&width=40"
-            isVisible={stage >= ConversationStage.CASH_INPUT}
-          >
-            <CashInput initialValue={cashToInvest} onSubmit={handleCashSubmit} />
-          </ChatMessage>
-        </div>
+            <div className={styles.userInputContainer}>
+              <ChatMessage
+                sender="user"
+                avatar="/placeholder.svg?height=40&width=40"
+                isVisible={stage >= ConversationStage.CASH_INPUT}
+              >
+                <CashInput initialValue={cashToInvest} onSubmit={handleCashSubmit} />
+              </ChatMessage>
+            </div>
 
-        <ChatMessage sender="assistant" isVisible={stage >= ConversationStage.ALLOCATION_QUESTION}>
-          <p className={styles.questionText}>
-            Do you want to manually change your asset allocation or fully take our diagnosis?
-          </p>
-        </ChatMessage>
+            <ChatMessage sender="assistant" isVisible={stage >= ConversationStage.ALLOCATION_QUESTION}>
+              <p className={styles.questionText}>
+                Do you want to manually change your asset allocation or fully take our diagnosis?
+              </p>
+            </ChatMessage>
 
-        <ChatMessage
-          sender="system"
-          isVisible={stage >= ConversationStage.ALLOCATION_SLIDERS}
-          className={styles.recommendationMessage}
-        >
-          <AssetAllocationGrid
-            allocations={assetAllocations()}
-            totalPortfolioValue={totalPortfolio}
-            onAllocationChange={handleAllocationChange}
-            updatingFromParent={updatingFromSliderRef.current}
-          />
-        </ChatMessage>
+            <ChatMessage
+              sender="system"
+              isVisible={stage >= ConversationStage.ALLOCATION_SLIDERS}
+              className={styles.recommendationMessage}
+            >
+              <AssetAllocationGrid
+                allocations={assetAllocations()}
+                totalPortfolioValue={totalPortfolio}
+                onAllocationChange={handleAllocationChange}
+                updatingFromParent={updatingFromSliderRef.current}
+              />
+            </ChatMessage>
 
-        <div className={styles.actionButtonContainer}>
-          <ActionButton
-            text="Begin Treatment"
-            href="/treatment"
-            isVisible={stage >= ConversationStage.ACTION_BUTTON}
-          />
-        </div>
+            <div className={styles.actionButtonContainer}>
+              {stage >= ConversationStage.ACTION_BUTTON && (
+                <button className={styles.beginTreatmentButton} onClick={handleBeginTreatment}>
+                  Begin Treatment
+                </button>
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

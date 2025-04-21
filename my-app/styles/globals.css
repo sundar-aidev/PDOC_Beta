@@ -66,3 +66,21 @@
   }
 }
 
+
+@layer components {
+  .card-option {
+    @apply flex flex-col items-center justify-center p-4 bg-white rounded shadow hover:shadow-lg transition text-center cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-300 text-black px-6 py-2 rounded hover:bg-gray-400 transition;
+  }
+
+  .input-field {
+    @apply border border-gray-300 p-2 rounded w-full;
+  }
+}
